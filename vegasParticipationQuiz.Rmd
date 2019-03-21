@@ -1,0 +1,118 @@
+---
+title: "Consumption and Growth Quizzes"
+output: html_notebook
+---
+
+## Consumption Quiz
+
+```{r}
+printVal <- function(c1 = 0, c2 = 0) {
+  c1 <- round(c1, 2)
+  c2 <- round(c2, 2)
+  print(paste0("Present consumption (C1) is: ", c1))
+  print(paste0("Future consumption (C2) is: ", c2))
+}
+```
+
+### Problem Parameters
+
+```{r}
+# Period One
+y1 <- 200
+w1 <- 100
+
+# Period Two
+y2 <- 250
+w2 <- 75
+
+# Real interest rate
+r <- 0.03
+```
+
+### Leonard
+
+```{r}
+# Consumes all in current period
+
+# c2 = 0
+# c1 = (y1 + w1) + (y2 + w2) / (1 + r)
+c1 <- (y1 + w1) + (y2 + w2) / (1 + r)
+c2 <- 0
+printVal(c1, c2)
+```
+
+### Penny
+
+```{r}
+# Consumes all in future period
+
+# c1 = 0
+# c2 / (1 + r) = (y1 + w1) + (y2 + w2) / (1 + r)
+# c2 = (y1 + w1) * (1 + r) + (y2 + w2)
+c1 <- 0
+c2 <- ((y1 + w1) * (1 + r)) + (y2 + w2)
+printVal(c1, c2)
+```
+
+### Sheldon
+
+```{r}
+# Perfect consumption smoothing
+
+# c1 = c2
+# c1 + c1 / (1 + r) = (y1 + w1) + (y2 + w2) / (1 + r)
+# c1 * (1 + r) + c1 = ((y1 + w1) * (1 + r)) + (y2 + w2)
+# c1 * (2 + r) = ((y1 + w1) * (1 + r)) + (y2 + w2)
+# c1 = (((y1 + w1) * (1 + r)) + (y2 + w2)) / (2 + r)
+c1 <- (((y1 + w1) * (1 + r)) + (y2 + w2)) / (2 + r)
+c2 <- c1
+printVal(c1, c2)
+```
+
+### Amy
+
+```{r}
+# Consume twice as much in future (saver)
+
+# c1 = 1/2 * c2
+# c1 + (2 * c1) / (1 + r) = (y1 + w1) + (y2 + w2) / (1 + r)
+# c1 * (1 + r) + 2 * c1 = ((y1 + w1) * (1 + r)) + (y2 + w2)
+# c1 * (3 + r) = ((y1 + w1) * (1 + r)) + (y2 + w2)
+# c1 = (((y1 + w1) * (1 + r)) + (y2 + w2)) / (3 + r)
+c1 <- (((y1 + w1) * (1 + r)) + (y2 + w2)) / (3 + r)
+c2 <- 2 * c1
+printVal(c1, c2)
+```
+
+### Howard
+
+```{r}
+# Does not want to borrow or save - NB/NL
+
+# c1 = y1 + w1
+# c2 = y2 + w2
+c1 <- y1 + w1
+c2 <- y2 + w2
+printVal(c1, c2)
+```
+
+### Bernadette
+
+```{r}
+# Consume twice as much now
+
+# c1 = 2 * c2
+# c1 + (1/2 * c1) / (1 + r) = (y1 + w1) + (y2 + w2) / (1 + r)
+# c1 * (1 + r) + (1 / 2) * c1 = ((y1 + w1) * (1 + r)) + (y2 + w2)
+# c1 * (1.5 + r) = ((y1 + w1) * (1 + r)) + (y2 + w2)
+# c1 = (((y1 + w1) * (1 + r)) + (y2 + w2)) / (1.5 + r)
+c1 <- (((y1 + w1) * (1 + r)) + (y2 + w2)) / (1.5 + r)
+c2 <- 0.5 * c1
+printVal(c1, c2)
+```
+
+
+
+
+
+
