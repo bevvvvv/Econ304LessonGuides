@@ -3,6 +3,11 @@ title: "Consumption and Growth Quizzes"
 output: html_notebook
 ---
 
+```{r}
+# refresh environment
+rm(list = ls())
+```
+
 ## Consumption Quiz
 
 ```{r}
@@ -112,6 +117,74 @@ printVal(c1, c2)
 ```
 
 
+## Growth Quiz
+
+```{r}
+printLetter <- function(val = 0, letter) {
+  print(paste0(letter," = ", val))
+}
+```
+
+### Parameters
+
+```{r}
+# Growth rate
+n <- 0.02
+
+# per worker production
+y <- function(k = 0) {
+  return(6 * (k ^ 0.5))
+}
+
+# Depreciation rate
+d <- 0.13
+```
+
+### Part a
+
+```{r}
+# households consume 90% - save 10%
+s <- 0.10
+
+# steady state condition
+# s * y = (n + d) * k
+# s * 6k^0.5 = (n + d) * k
+# s = (n + d) * k ^ 0.5 / 6
+# 6 * s / (n + d) = k ^ 0.5
+# k = ((6 * s) / (n + d)) ^ 2
+k <- ((6 * s) / (n + d)) ^ 2
+printLetter(k, "A")
+
+# y is per worker production function
+yStar <- y(k)
+printLetter(yStar, "B")
+
+# consumption is production - savings (or investment)
+# c = y - y * s
+c <- yStar - (yStar * s)
+printLetter(c, "C")
+```
+
+### Part b
+
+```{r}
+# we want to double output
+# to do so we need to increase input to capital
+# 6 * k ^ 0.5 = 48
+# k ^ 0.5 = 8
+# k = 8 ^ 2
+k2 <- (yStar / 3) ^ 2
+printLetter(k2, "D")
+```
+
+### Part c
+
+```{r}
+# what s do we need to achieve k of 64
+# s = (n + d) * k / y
+s2 <- ((n + d) * k2) / (2 * yStar)
+printLetter(s2, "E")
+```
 
 
 
