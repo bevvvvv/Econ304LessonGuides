@@ -78,9 +78,19 @@ c1 <- seq(from = 0, to = 500, by = 0.5)
 c2 <- ((y1 + w1) * (1 + r) + (y2 + w2)) - (1 + r) * c1
 IBL <- data.frame(c1 = c1, c2 = c2)
 
+nlnbc1 <- y1 + w1
+nlnbc2 <- y2 + w2
+
+yintercept <- (1 + r) * (y1 + w1) + (y2 + w2)
+xintercept <- (y1 + w1) + (y2 + w2) / (1 + r)
+
+# TODO: annotate and add consumption smoothing point
 IBL %>%
   ggplot(aes(x = c1, y = c2)) +
   geom_smooth() +
+  geom_point(aes(x = xintercept, y = 0)) +
+  geom_point(aes(x = 0, y = yintercept)) +
+  geom_point(aes(x = nlnbc1, y = nlnbc2)) +
   xlab("Current Consumption (C1)") +
   ylab("Future Consumption (C2)") +
   ggtitle("Intertemporal Budget Line") +
