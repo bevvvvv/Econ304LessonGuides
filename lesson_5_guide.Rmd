@@ -1,0 +1,177 @@
+---
+title: "Lesson 5 Guide"
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+```{r echo = FALSE}
+# refresh environment
+rm(list = ls())
+
+library(mdsr) # utility package for tidyverse
+```
+
+# Lesson 5: Consumption
+
+## Consumption as part of GDP
+
+Consumption accoutns for roughly 2/3 of GDP in the United States. This dictates
+that it becomes a very important aspect around policy making. From 2001-2007
+consumption grew by roughly 3% per year. During the great recession however
+consumtion fell 0.25% in 2008 and 0.6% in 2009.
+
+## Consumption Theories
+
+In this lesson we look at consumer choice between consumption and saving (or 
+future consumption).
+
+* Theory 1: Intertemporal Choice (Irving Fisher)
+    + we look at this
+* Theory 2: Keynesian Consumption Function (Econ 104)
+* Theory 3: Permanent Income Hypothesis (Friedman)
+* Theory 4: Life-Cycle Hypothesis (Modigliani)
+
+## Theory of Intertemporal Choice
+
+### 3 steps to this theory
+
+1. Define the Intertemporal Budget Constraint
+2. Define the consumer preferences
+3. Show the optimal consumption bundle
+
+## Assumptions
+
+1. Individuals live in a 2 period world
+    + Period 1 vs Period 2
+    + Current vs Future
+    + Today vs Tomorrow
+2. No Income/Wealth is left over
+    + anything saved in period 1, is consumed in period 2
+    + anything borrowed in period 1, is paid back in period 2
+3. Savings rate = borrowing rate
+
+## Terminology
+
+Y~i~ = Income in period i (Y~1~ vs Y~2~)  
+W~i~ = Wealth in period i  
+C~i~ = Consumption in period i
+
+(Y~i~ + W~i~) = i-Period's resources
+
+With 2 time periods:
+
+* (Y~1~ + W~1~) = current resources
+* (Y~2~ + W~2~) = future resources
+    + Combined they are lifetime resources
+    
+## Intertemporal Budget Line
+
+```{r}
+y1 <- 100
+w1 <- 50
+y2 <- 50
+w2 <- 200
+r <- 0.05
+
+c1 <- seq(from = 0, to = 500, by = 0.5)
+c2 <- ((y1 + w1) * (1 + r) + (y2 + w2)) - (1 + r) * c1
+IBL <- data.frame(c1 = c1, c2 = c2)
+
+IBL %>%
+  ggplot(aes(x = c1, y = c2)) +
+  geom_smooth() +
+  xlab("Current Consumption (C1)") +
+  ylab("Future Consumption (C2)") +
+  ggtitle("Intertemporal Budget Line") +
+  scale_y_continuous(limits = c(0,500)) +
+  geom_abline(slope = 1, intercept = 0)
+```
+
+### Points to observe
+
+* Y-intercept = Only Future consumption (C~2~)
+* X-intercept = Only Current consumption (C~1~)
+* intserction of IBL and y = x is C~1~ = C~2~ (Consumption Smoothing)
+* No-Lending/No-Borrowing Point
+    + C~1~ = Y~1~ + W~1~
+    + C~2~ = Y~2~ + W~2~
+* Slope = -(1 + r)
+    + r = real interest rate
+    
+## Math of IBL
+
+Assumption 2: PVLC = PVLR
+
+Present Value Lifetime Consumption (PVLC)  
+\[
+C_1 + \frac{C_2}{(1 + r)} + \frac{C_3}{(1 + r)^2} + \frac{C_4}{(1 + r)^3} + ... + \frac{C_n}{(1 + r)^{n-1}}
+\]
+
+Present Value Lifetime Resources (PVLR)
+\[
+(Y_1 + W_1) + \frac{(Y_2 + W_2)}{(1 + r)} + \frac{(Y_3 + W_3)}{(1 + r)^2} + \frac{(Y_4 + W_4)}{(1 + r)^3} + ... + \frac{(Y_n + W_n)}{(1 + r)^{n-1}}
+\]
+
+When n = 2 you get our IBL:
+\[
+C_1 + \frac{C_2}{(1 + r)} = (Y_1 + W_1) + \frac{(Y_2 + W_2)}{(1 + r)}
+\]
+
+Put it into `y = mx + b` form:
+\[
+C_2 = -(1 + r) * C_1 + ((Y_1 + W_1)(1 + r) + (Y_2 + W_2))
+\]
+
+## Shifts of the IBL
+```{r}
+IBL$c2up <- IBL$c2 + 50
+IBL$c2down <- IBL$c2 - 50
+
+IBL %>%
+  ggplot(aes(x = c1, y = c2)) +
+  geom_smooth() +
+  geom_smooth(aes(y = c2up, color = "More Resources")) +
+  geom_smooth(aes(y = c2down, color= "Less Resources")) +
+  xlab("Current Consumption (C1)") +
+  ylab("Future Consumption (C2)") +
+  ggtitle("Intertemporal Budget Line") +
+  scale_y_continuous(limits = c(0,500))
+```
+
+Green (Shifts up/right):
+* Increase in Y~1~, Y~2~, W~1~, W~2~
+
+Red (Shifts down/left):
+* Decrease in Y~1~, Y~2~, W~1~, W~2~
+
+## Rotation of the IBL
+
+```{r}
+r <- 0
+IBL$c2slow <- ((y1 + w1) * (1 + r) + (y2 + w2)) - (1 + r) * IBL$c1
+r <- 0.3
+IBL$c2steep <- ((y1 + w1) * (1 + r) + (y2 + w2)) - (1 + r) * IBL$c1
+
+IBL %>%
+  ggplot(aes(x = c1, y = c2)) +
+  geom_smooth() +
+  geom_smooth(aes(y = c2slow, color = "Lower interest rates")) +
+  geom_smooth(aes(y = c2steep, color= "Higher interest rates")) +
+  xlab("Current Consumption (C1)") +
+  ylab("Future Consumption (C2)") +
+  ggtitle("Intertemporal Budget Line") +
+  scale_y_continuous(limits = c(0,500))
+```
+
+An increase in r (real interest rate) correponds to a steeper slope and a decrease
+in r corresponds to a shallower slope. This makes sense since the slope is -(1 + r)
+
+## Preferences
+
+
+
+
+
+
+
