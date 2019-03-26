@@ -1,11 +1,14 @@
 ---
 title: "Lesson 6 Guide"
 output:
-  pdf_document: default
+  pdf_document: 
+    toc: true
+    toc_depth: 2
+    number_sections: true
   html_notebook: default
 ---
 
-```{r echo = FALSE}
+```{r include = FALSE}
 # refresh environment
 rm(list = ls())
 
@@ -113,7 +116,7 @@ but at a decreasing rate. As K goes up, MPK^e^ goes down.
 
 ### UC vs MPK^e^
 
-```{r}
+```{r echo = FALSE}
 k <- seq(from = 0, to = 50, by = 0.5)
 
 r <- 0.05
@@ -169,7 +172,7 @@ which means MPK^e^ must increase, which means $K^*$ must increase, so I~t~ decre
 
 * r increases, I~t~ decreases
 
-```{r}
+```{r echo = FALSE}
 data %>%
   ggplot(aes(x = k, y = MPK, color = "Investment")) +
   geom_smooth() +
@@ -211,7 +214,7 @@ must increase. And in this lesson we determined that when r increases, I decreas
 
 This brings us to our model of Savings vs Investment
 
-```{r}
+```{r echo = FALSE}
 data$savings <- k
 data %>%
   ggplot(aes(x = k, y = MPK, color = "Investment")) +
