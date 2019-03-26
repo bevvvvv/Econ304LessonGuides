@@ -95,9 +95,12 @@ IBL %>%
   ggtitle("Intertemporal Budget Line") +
   scale_y_continuous(limits = c(0,500)) +
   geom_abline(slope = 1, intercept = 0) +
-  annotate(geom = "text", x = xintercept - 50, y = 15, label = "Only Current Consumption") +
-  annotate(geom = "text", x = 50, y = yintercept + 15, label = "Only Future Consumption") +
-  annotate(geom = "text", x = nlnbc1 + 25, y = nlnbc2 + 25, label = "No Lending/No Borrowing")
+  annotate(geom = "text", x = xintercept - 50, y = 15,
+           label = "Only Current Consumption") +
+  annotate(geom = "text", x = 50, y = yintercept + 15,
+           label = "Only Future Consumption") +
+  annotate(geom = "text", x = nlnbc1 + 25, y = nlnbc2 + 25,
+           label = "No Lending/No Borrowing")
 ```
 
 ### Points to observe
@@ -188,17 +191,19 @@ Use an indifference curve.
 ```{r}
 util <- 200
 IBL$indiff <- (util / c1 ^ 0.5) ^ 2
+IBL$indiffDouble <- (util * 2 / c1 ^ 0.5) ^ 2
 
 IBL %>%
   ggplot(aes(x = c1, y = c2)) +
   geom_smooth() +
   geom_smooth(aes(c = c1, y = indiff, color = "IC")) +
+  geom_smooth(aes(c = c1, y = indiffDouble, color = "IC * 2")) +
   geom_point(aes(x = xintercept, y = 0)) +
   geom_point(aes(x = 0, y = yintercept)) +
   geom_point(aes(x = nlnbc1, y = nlnbc2)) +
   xlab("Current Consumption (C1)") +
   ylab("Future Consumption (C2)") +
-  ggtitle("Intertemporal Budget Line") +
+  ggtitle("Intertemporal Budget Line vs Indifference Curve (IC)") +
   scale_y_continuous(limits = c(0,500))
 ```
 
