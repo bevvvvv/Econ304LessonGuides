@@ -5,6 +5,13 @@ output:
   html_notebook: default
 ---
 
+```{r echo = FALSE}
+# refresh environment
+rm(list = ls())
+
+library(mdsr) # utility package for tidyverse
+```
+
 # Lesson 6: Saving and Investment
 
 ## Firm's Decision
@@ -100,6 +107,156 @@ UC = \frac{(r + \delta)(1 - ITC)P_k}{(1 - \tau)}
 5. Increase in $\tau$ is increase in UC
 
 ## Defining Marginal Benefit MPK^e^
+
+Capital has diminishing marginal returns. This means that as K increases, Y increases,
+but at a decreasing rate. As K goes up, MPK^e^ goes down.
+
+### UC vs MPK^e^
+
+```{r}
+k <- seq(from = 0, to = 50, by = 0.5)
+
+r <- 0.05
+delta <- 0.13
+ITC <- 0.2
+tau <- 0.3
+P <- 100
+UC <- ((r + delta) * (1 - ITC) * P)/(1 - tau)
+
+MPK <- 50 - k
+
+data <- data.frame(UC = UC, MPK = MPK)
+
+data %>%
+  ggplot(aes(x = k, y = MPK, color = "MPK")) +
+  geom_smooth() +
+  geom_smooth(aes(y = UC, color = "UC")) +
+  geom_point(aes(x = 50 - UC[1], y = UC[1], color = "Max Profit")) +
+  xlab("Capital (K)") +
+  ylab("Real Output") +
+  ggtitle("UC vs MK") +
+  scale_y_continuous(limits = c(0,60))
+```
+
+Shifts for UC are all the variables in the euqation of UC, which move it up or down.
+Shifts for MPK are A and AS. These are total factor productivty (or tech) and "Animal Spirits".
+Animal Spirits referrs to investor confidence.
+
+## Investment
+
+### Terminology
+
+I~t~ = Gross investment in year t
+K~t~ = capital stock at beginning of year t
+K~t+1~ = capital stock at beginning of year t + 1
+
+* Net investment = $\Delta K$ during year t
+    + $K_{t+1} - K_t$
+* Net investment = gross investment - depreciation
+
+\[
+K_{t+1} - K_t = I_t - \delta K_t
+\]
+\[
+I_t = K_{t+1} - K_t + \delta K_t
+\]
+
+If we assume that firms are trying to maximize profit $\pi$ then $I_t = K^* - K_t + \delta K_t$
+where $K^*$ is the value of k~t+1~ that fulfills the condition UC = MPK^e^
+
+From this we can see that if r (real interest rate) increases, then User Cost increases,
+which means MPK^e^ must increase, which means $K^*$ must increase, so I~t~ decreases.
+
+* r increases, I~t~ decreases
+
+```{r}
+data %>%
+  ggplot(aes(x = k, y = MPK, color = "Investment")) +
+  geom_smooth() +
+  ylab("Real Interest Rate (r)") +
+  xlab("Investment in year t") +
+  ggtitle("r vs I") +
+  scale_y_continuous(limits = c(0,60))
+```
+
+
+## The Goods Market Equlibrium
+
+* We are in a closed economy so NX = 0
+* Savings = Investment
+
+We can go back to our GDP function
+\[
+Y = C + I + G
+\]
+Then rewrite it with investment as our response:
+\[
+I = Y - C - G
+\]
+We know for savings
+\[
+S = S_{pvt} + S_{pub}
+\]
+\[
+S = ((Y + TR + INT) - (C + T)) + (T - (G + TR + INT))
+\]
+\[
+S = Y - C - G
+\]
+
+Therefore savings is equal to investment ($S = I$) when in equilibrium.
+
+Recall in Lesson 5 we learned that when r increases, consumption decreases, so savings
+must increase. And in this lesson we determined that when r increases, I decreases.
+
+This brings us to our model of Savings vs Investment
+
+```{r}
+data$savings <- k
+data %>%
+  ggplot(aes(x = k, y = MPK, color = "Investment")) +
+  geom_smooth() +
+  geom_smooth(aes(y = savings, color = "Savings")) +
+  geom_point(aes(x = 25, y = 25, color = "equilibrium")) +
+  ylab("Real Interest Rate (r)") +
+  xlab("Investment in year t") +
+  ggtitle("r vs I") +
+  scale_y_continuous(limits = c(0,60))
+```
+
+At the equilibrum point above Savings is equal to investment for the given level
+of r (real interest rate).
+
+## Shifts
+
+The following states how an increase in each factor changes the resposne variable.
+
+### Savings Function
+\[
+S = Y - C - G
+\]
+
+* Y +
+* Y~2~ -
+* W~1~ -
+* W~2~ -
+* T +
+* Autonomous Consumption -
+* Consumer confidence -
+* G -
+
+### Investment Function
+
+\[
+I = K^* - K_t + \delta K_t
+\]
+
+* A +
+* AS +
+* $\tau$ -
+* $\delta$ -
+* P~k~ -
+* ITC +
 
 
 
