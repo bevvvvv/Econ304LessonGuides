@@ -1,0 +1,107 @@
+---
+title: "Lesson 6 Guide"
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+# Lesson 6: Saving and Investment
+
+## Firm's Decision
+
+Firms have to make a decision about what to use their resources for. There are two
+things that firms use their resources for.
+
+1. Pay dividends to stock holders
+2. Increase capacity to produce more in the future (I)
+
+Firms will choose a level of capital (K) that maximizes profit by reaching the
+condition $MB = MC$
+
+MB = Expected marginal product of capital (MPK^e^)
+
+MC = User-cost of capital (UC)
+
+$\pi_{max}$ when UC = MPK^e^
+
+## User Cost
+
+We will express user cost in number of output, which is the real cost.
+
+Example: Michael Scott's Paper Company
+
+* Output: Reams of Paper (Price = $10)
+* Capital: Van (Price = $10,000)
+* UC = 1,000 reams of paper
+
+### User Cost Factors
+
+User Cost depends on:
+
+* Real Price of capital (P~k~)
+* The depreciation rate ($\delta$)
+* The real interest rate (r)
+* The business tax on revenue ($\tau$)
+* Investment Tax Credit (ITC)
+
+### Defining User Cost
+
+Start without considering taxes or tax credits
+
+$\frac{w}{\tau} = 0$ and $ITC = 0$
+
+\[
+UC = rP_k + \delta P_k
+\]
+\[
+UC = (r + \delta)P_k
+\]
+
+Now lets add in $\tau$ (business tax on revenue) Firms will now be losing some %
+of their benefit (revenue) MPK^e^
+
+At max $\pi$:
+\[
+UC = MPK^e - \tau MPK^e
+\]
+\[
+UC = (1 - \tau)MPK^e
+\]
+\[
+\frac{(r + \delta)P_k}{1 - \tau} = \frac{(1 - \tau)MPK^e}{1 - \tau}
+\]
+\[
+MPK^e = \frac{(r + \delta)P_k}{1 - \tau}
+\]
+\[
+UC = \frac{(r + \delta)P_k}{1 - \tau}
+\]
+
+Now let us add in Investment Tax Credit (ITC). Assume ITC is a % of P~k~ (real price
+of capital)
+
+\[
+P_k = P_k - ITC(P_k)
+\]
+\[
+P_k = (1 - ITC)P_k
+\]
+Plug this into our user cost we get:
+\[
+UC = \frac{(r + \delta)(1 - ITC)P_k}{(1 - \tau)}
+\]
+
+### Shifts in User costs
+
+1. Increase in r is increase in UC
+2. Increase in $\delta$ is increase in UC
+3. Increase in ITC is decrease in UC
+4. Increase in P~k~ is increase in UC
+5. Increase in $\tau$ is increase in UC
+
+## Defining Marginal Benefit MPK^e^
+
+
+
+
+
