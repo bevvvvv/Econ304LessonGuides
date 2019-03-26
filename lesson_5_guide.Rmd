@@ -84,7 +84,6 @@ nlnbc2 <- y2 + w2
 yintercept <- (1 + r) * (y1 + w1) + (y2 + w2)
 xintercept <- (y1 + w1) + (y2 + w2) / (1 + r)
 
-# TODO: annotate and add consumption smoothing point
 IBL %>%
   ggplot(aes(x = c1, y = c2)) +
   geom_smooth() +
@@ -95,7 +94,10 @@ IBL %>%
   ylab("Future Consumption (C2)") +
   ggtitle("Intertemporal Budget Line") +
   scale_y_continuous(limits = c(0,500)) +
-  geom_abline(slope = 1, intercept = 0)
+  geom_abline(slope = 1, intercept = 0) +
+  annotate(geom = "text", x = xintercept - 50, y = 15, label = "Only Current Consumption") +
+  annotate(geom = "text", x = 50, y = yintercept + 15, label = "Only Future Consumption") +
+  annotate(geom = "text", x = nlnbc1 + 25, y = nlnbc2 + 25, label = "No Lending/No Borrowing")
 ```
 
 ### Points to observe
@@ -179,9 +181,79 @@ in r corresponds to a shallower slope. This makes sense since the slope is -(1 +
 
 ## Preferences
 
+The question: what combination of C~1~ and C~2~ would make an individual equally happy?
 
+Use an indifference curve.
 
+```{r}
+util <- 200
+IBL$indiff <- (util / c1 ^ 0.5) ^ 2
 
+IBL %>%
+  ggplot(aes(x = c1, y = c2)) +
+  geom_smooth() +
+  geom_smooth(aes(c = c1, y = indiff, color = "IC")) +
+  geom_point(aes(x = xintercept, y = 0)) +
+  geom_point(aes(x = 0, y = yintercept)) +
+  geom_point(aes(x = nlnbc1, y = nlnbc2)) +
+  xlab("Current Consumption (C1)") +
+  ylab("Future Consumption (C2)") +
+  ggtitle("Intertemporal Budget Line") +
+  scale_y_continuous(limits = c(0,500))
+```
+
+The indifference curve used in the example is at a utility of 200 for a cobb
+douglas utility function of $U = C_1^{0.5} * C_2^{0.5}$
+
+If "Marissa" always consumptions smooths, then you want to find the point on
+the graph where C~1~ = C~2~
+
+### To find C*:
+
+1. Preference (C~1~ = C~2~)
+2. IBL (PVLR = PVLC)
+
+\[
+C_1 + \frac{C_2}{(1 + r)} = (Y_1 + W_1) + \frac{(Y_2 + W_2)}{(1 + r)}
+\]
+Replace C~2~ with C~1~, since they are equal when smoothing
+\[
+C_1 + \frac{C_1}{(1 + r)} = (Y_1 + W_1) + \frac{(Y_2 + W_2)}{(1 + r)}
+\]
+\[
+(1 + r) * C_1 + C_1 = (1 + r)(Y_1 + W_1) + (Y_2 + W_2)
+\]
+\[
+C^* = \frac{(1 + r)(Y_1 + W_1) + (Y_2 + W_2)}{(2 + r)}
+\]
+
+What if "Sam" prefers to consume twice as much in the future period?
+
+1. C~1~ = 0.5 * C~2~
+2. IBL
+
+\[
+C_1^* = \frac{(1 + r)(Y_1 + W_1) + (Y_2 + W_2)}{(3 + r)}
+\]
+
+How does changes in r (real interest rate) affect consumption?
+
+## Substitution Effect
+
+If r increases, then C~1~ is more expensive for both borrowers and savers.
+
+Therefore, C~1~ goes down and C~2~ goes up, for both types.
+
+* Sub into "cheaper" good
+
+## Income Effect
+If r increases
+
+* Borrower has less real income, so all consumption goes down
+* Saver has more real income, so all consumption goes up
+
+When looking at data, when the real interest rate increases, C~1~ decreases, so
+the substitution effect is stronger than the income effect.
 
 
 
