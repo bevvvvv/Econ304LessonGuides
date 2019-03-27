@@ -1,0 +1,158 @@
+---
+title: "Lesson 7: Economic Growth"
+output:
+  pdf_document: 
+    toc: true
+    toc_depth: 2
+    number_sections: true
+  html_notebook: default
+---
+
+```{r include = FALSE}
+# refresh environment
+rm(list = ls())
+
+library(mdsr) # utility package for tidyverse
+```
+
+
+## What is Economic Growth?
+
+Economic growth is an increase in living standards, which has traditionally been
+measured using Real GDP per capita.
+
+# Chapter Six: Solow Growth Model
+
+## Notation
+
+* L~t~ - Number of workers
+* n - growth rate of work force
+    + population growth rate
+* K~t~ - capital stock
+* $\delta$ - depreciation rate
+* Y~t~ - output (GDP)
+* C~t~ - consumption
+* I~t~ - gross investment
+    + $C_t = Y_t - I_t$
+* $y_t = \frac{Y_t}{L_t}$ - ouput per worker
+* $c_t = \frac{C_t}{L_t}$ - consumption per worker
+* $k_t = \frac{K_t}{L_t}$ - capital per worker (capital-labor ratio)
+* $i_t = \frac{I_t}{L_t}$ - investment per worker
+
+## Big Finding of Solow Model
+
+In the solow model, if the is no productivity growth (an increase in TFP A), then
+the economy reaches a steady state. At a steady state y~t~, k~t~, and c~t~ are all
+constant while Y, K, and C will grow at the rate n (population growth rate).
+
+## Steady-State of Investment
+
+I~t~ (Investment) serves two main purposes:
+
+1. Expand the size of capital stock (K~t~)
+2. Replace depreciated capital ($\delta K_t$)
+
+Since in steady state we know that capital stock K~t~ will grow at the rate n, we
+can conclude that $I_t = nK_t + \delta K_t$, which brings per worker steady state
+of investment to:
+\[
+i = (n + \delta)k
+\]
+
+## Per-Worker Production Function
+
+Recall that we stated $Y = AF(K, L)$. We can add the time aspect in to get $Y_t =
+AF(K_t, L_t)$. Now let's find the per-worker equation:
+\[
+\frac{Y_t}{L_t} = \frac{AF(K_t, L_t)}{L_t}
+\]
+\[
+\frac{Y_t}{L_t} = A\frac{1}{L_t}F(K_t, L_t)
+\]
+From here, if the function F(K~t~, L~t~) has constant return to scales we can conclude:
+\[
+\frac{Y_t}{L_t} = AF(\frac{K_t}{L_t}, \frac{L_t}{L_t})
+\]
+Which in our notation is
+\[
+y_t = Af(k_t)
+\]
+
+```{r echo = FALSE}
+A <- 10
+alpha <- 0.3
+k_t <- seq(from = 0, to = 200, by = 0.5)
+y_t <- 6 * k_t ^ alpha
+data <- data.frame(k_t = k_t, y_t = y_t)
+
+data %>%
+  ggplot(aes(x = k_t, y = y_t)) +
+  geom_smooth() +
+  xlab("Capital-Labor ratio") +
+  ylab("Per-worker production") +
+  ggtitle("Per worker Production function")
+```
+
+## Steady-State of Consumption
+
+We know two things:
+
+1. $C_t = Y_t - I_t$
+2. $I_t = (n + \delta)K_t$ at steady state
+
+So we can conlude that $C_t = Y_t - (n + \delta)K_t$ and per worker we get:
+\[
+c = y - (n + \delta)k
+\]
+\[
+c = Af(k) - (n + \delta)k
+\]
+
+If capital increases what happens to production?
+
+* If k increases, then $f(k)$ increases, but at a decreasing rate, so c (consmumption increases)
+* If k increases, then $(n + \delta)k$ increases, but at a rate of $(n + \delta)$, so c (consumption decreases)
+
+What happens if we try to maximize consumption? (not related to steady state)
+
+```{r echo = FALSE}
+n <- 0.05
+delta <- 0.15
+data$i <- (n + delta) * k_t
+
+data %>%
+  ggplot(aes(x = k_t, y = y_t, color = "production")) +
+  geom_smooth() +
+  geom_smooth(aes(y = i, color = "steady")) +
+  xlab("Capital-Labor ratio") +
+  ylab("Per-worker production") +
+  ggtitle("Steady State investment vs production")
+```
+
+```{r}
+data$c <- data$y_t - data$i
+
+data %>%
+  ggplot(aes(x = k_t, y = c)) +
+  geom_smooth() +
+  xlab("Capital-Labor ratio") +
+  ylab("Consumption per worker") +
+  ggtitle("Consumption per worker (Diff of production and steady invest)") +
+  scale_x_continuous(limits = c(0, 125))
+```
+  
+The maximum of consumption happens at the value of k with the biggest difference of
+y and $(n + \delta)k$. Consumption comes back down to zero where production is equal
+to $(n + \delta)k$.
+
+## Reacing the Steady-State
+  
+  
+
+
+
+
+
+
+
+
