@@ -92,9 +92,9 @@ workers.
 
 Let's look back at the relationships between unemployment and employment:
 
-1. # of hires can be defined as $f * U$
+1. Number of hires can be defined as $f * U$
     + $H(U, V) =  f * U$
-2. # of separations can be defined as $s * E$
+2. Number of separations can be defined as $s * E$
 
 Steady-state of unemployment would be considered the natural rate of unemployement:
 \[
@@ -186,8 +186,94 @@ k = \gamma \frac{1}{\sqrt{\theta}} * (y - w) * \frac{1}{s}
 ## Vacancy Supply curve
 
 
+The vacancy supply curve is a function $\theta (w)$, which we can get by solving
+our MB = MC equation of vacancies for $\theta$:
+
+\[
+k = \gamma \frac{1}{\sqrt{\theta}} * (y - w) * \frac{1}{s}
+\]
+\[
+\sqrt{\theta} = \gamma \frac{1}{k} * (y - w) * \frac{1}{s}
+\]
+\[
+theta(w) = (\frac{\gamma * (y - w)}{s * k})^2
+\]
+
+```{r echo = FALSE}
+data$w <- seq(from = 0, to = 50, by = 0.5)
+y <- 50
+k <- 20
+data$vs <- ((gamma * (y - data$w)) / (s * k))^2
+
+data %>%
+  ggplot(aes(x = w, y = vs)) +
+  geom_line() +
+  xlab("Wage (w)") +
+  ylab("Market Tightnes") +
+  ggtitle("Vacancy Supply Curve")
+```
+
+## Shifts in Vacancy Supply
+
+Shifts can be seen within the vacancy supply function:
+
+1. $\gamma$ +
+2. y +
+3. s -
+4. k -
+
+# Wage Formation (Wage-Setting Curve)
+
+There could be a variety of factors that set wages:
+
+* taxes
+* y (output per worker)
+* education
+* minimum wage
+* $\beta$ - bargaining power of unions
+* b - unemployment benefits
+* $\theta$ - market tightness
+
+For us the Wage-Setting (WS) curve will be given. Example:
+\[
+w = \beta y + \beta k \theta + (1 - \beta) b ...
+\]
+
+```{r echo = FALSE}
+data$ws <- 2 * data$w
+
+data %>%
+  ggplot(aes(x = w, y = ws)) +
+  geom_line() +
+  xlab("Wage (w)") +
+  ylab("Market Tightnes") +
+  ggtitle("Wage Setting Curve")
+```
 
 
+# Summary
 
+We have three curves:
+
+1. $w(\theta)$ wage setting VS
+2. $\theta(w)$ vacancy supply WS
+3. $u(\theta)$ Beveridge curve BC
+
+```{r echo = FALSE}
+# intecept guess
+inter <- 33.5
+data %>%
+  ggplot(aes(x = w, y = ws)) +
+  geom_line() +
+  geom_line(aes(y = vs)) +
+  geom_vline(xintercept = inter) +
+  xlab("Wage (w)") +
+  ylab("Market Tightnes") +
+  ggtitle("Wage Setting Curve vs Vacancy Supply")
+```
+
+
+To find the unemployment rate associated with the equilbrium point, just find the
+unemployment rate on the BC with the same market tightness. 
 
 
