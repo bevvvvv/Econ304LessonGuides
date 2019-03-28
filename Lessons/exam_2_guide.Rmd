@@ -1,0 +1,58 @@
+---
+title: "Exam 2 Main Concepts"
+output:
+  pdf_document: 
+    toc: true
+    toc_depth: 2
+    number_sections: true
+  html_notebook: default
+---
+
+```{r include = FALSE}
+# refresh environment
+rm(list = ls())
+
+library(mdsr) # utility package for tidyverse
+```
+
+
+# Lesson 4
+
+## Job Finding Rate
+
+Probability of find a job
+\[
+f = \frac{H(U, V)}{U}
+\]
+\[
+f = \gamma \sqrt{\theta}
+\]
+
+## Vacancy Filling Rate
+
+Probability of filling a vacancy
+\[
+q = \frac{H(U, V)}{V}
+\]
+\[
+q = \gamma (\theta)^{-1/2}
+\]
+
+# Lesson 5
+
+# Lesson 6
+
+# Lesson 7
+
+
+
+
+
+
+
+
+
+
+
+
+
