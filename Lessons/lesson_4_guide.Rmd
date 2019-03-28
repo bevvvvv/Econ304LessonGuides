@@ -196,7 +196,7 @@ k = \gamma \frac{1}{\sqrt{\theta}} * (y - w) * \frac{1}{s}
 \sqrt{\theta} = \gamma \frac{1}{k} * (y - w) * \frac{1}{s}
 \]
 \[
-theta(w) = (\frac{\gamma * (y - w)}{s * k})^2
+\theta(w) = (\frac{\gamma * (y - w)}{s * k})^2
 \]
 
 ```{r echo = FALSE}
