@@ -79,10 +79,10 @@ y_t = Af(k_t)
 \]
 
 ```{r echo = FALSE}
-A <- 10
+A <- 6
 alpha <- 0.3
 k_t <- seq(from = 0, to = 200, by = 0.5)
-y_t <- 6 * k_t ^ alpha
+y_t <- A * k_t ^ alpha
 data <- data.frame(k_t = k_t, y_t = y_t)
 
 data %>%
@@ -120,16 +120,26 @@ n <- 0.05
 delta <- 0.15
 data$i <- (n + delta) * k_t
 
+# intecept
+steady <- (A / (n + delta)) ^ (1 / (1 - alpha))
+
+# max consumption
+maxConsum <- ((alpha * A) / (n + delta)) ^ (1 / (2 - alpha))
+print(maxConsum)
+
 data %>%
   ggplot(aes(x = k_t, y = y_t, color = "production")) +
   geom_smooth() +
   geom_smooth(aes(y = i, color = "steady")) +
+  geom_vline(xintercept = steady) +
+  annotate("text", x = steady - 5, y = 1, label = "K*") +
+  geom_vline(xintercept = maxConsum) +
   xlab("Capital-Labor ratio") +
   ylab("Per-worker production") +
   ggtitle("Steady State investment vs production")
 ```
 
-```{r}
+```{r echo = FALSE}
 data$c <- data$y_t - data$i
 
 data %>%
@@ -145,11 +155,26 @@ The maximum of consumption happens at the value of k with the biggest difference
 y and $(n + \delta)k$. Consumption comes back down to zero where production is equal
 to $(n + \delta)k$.
 
-## Reacing the Steady-State
+## Reaching the Steady-State
   
   
-
-
+At steady state let us assume there is no change in TFP (A). We know that in steady
+state $I_t = (n + \delta)K_t$ and that Savings = Investment in equilbrium. Let us
+define s as the savings rate.
+\[
+S_t = sY_t
+\]
+Since we stated savings = investment:
+\[
+sY_t = (n + \delta)K_t
+\]
+Which gives us the per worker steady-state condition:
+\[
+sf(k) = (n + \delta)k
+\]
+\[
+sy = (n + \delta)k
+\]
 
 
 
