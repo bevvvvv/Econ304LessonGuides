@@ -1,0 +1,193 @@
+---
+title: "Lesson 4: Job Search"
+output:
+  pdf_document: 
+    toc: true
+    toc_depth: 2
+    number_sections: true
+  html_notebook: default
+---
+
+```{r include = FALSE}
+# refresh environment
+rm(list = ls())
+
+library(mdsr) # utility package for tidyverse
+```
+
+## Key Terms
+
+* U - Number of unemployed persons
+* E - Number of employed persons
+* V - Number of vacancies (job openings)
+* u - Unemployment rate ($u = \frac{U}{LF}*100$)
+* LF - Labor force ($LF = E + U$)
+* $\theta$ - market tightness ($\theta = \frac{V}{U}$)
+* Hires - Unemployed workers who become employed
+* Separations - Employed workers who become unemployed
+* Filled - Vacancies that become someone who is employed
+* Separations - Employed workers who turn into a vacancy
+
+# Matching Function
+
+The flow of hires in an economy can be defined by a matching function $H(U, V)$
+where an increase in unemployed or an increase in vacancies increases the number
+of hires (positively correlated).
+
+Example:
+\[
+H(U, V) = \gamma \sqrt{U} \sqrt{V}
+\]
+where  $\gamma$ is a coefficient that determines the matching efficiency.
+
+## Job-Finding Rate ($f$)
+
+The job-finding rate is defined as the probability that you find a job.
+
+\[
+f = \frac{H(U, V)}{U}
+\]
+Let us use our example:
+\[
+f = \frac{\gamma \sqrt{U} \sqrt{V}}{U}
+\]
+\[
+f = \frac{\gamma U^{1/2} V^{1/2}}{U} = \gamma U^{-1/2} V^{1/2} = \gamma \frac{V^{1/2}}{U^{1/2}} = \gamma \sqrt{\theta}
+\]
+
+
+## Vacancy-Filling rate ($q$)
+
+The vacancy-filling rate is defined as the probability that a vacancy is filled by
+a firm within a given period.
+
+\[
+q = \frac{H(U, V)}{V}
+\]
+Let us use our example:
+\[
+q = \frac{\gamma U^{1/2} V^{1/2}}{V^{1/2}} = \gamma U^{1/2} V^{-1/2} = \gamma (\frac{U}{V})^{1/2} = \gamma \frac{1}{\sqrt{\theta}} = \gamma (\theta)^{-1/2}
+\]
+
+## A look at $f$ and $q$
+
+Recall that $\theta$ is a measure of market tightness ($\frac{U}{V}$), so as $\theta$
+increases the labor market becomes "tighter" (The ratio of vacancies to unemployed increases).
+If the labor market is tight:
+
+1. It is easy for unemployed workers to find a job.
+2. It is difficult for a firm to fill a vacancy
+
+The two ways this can happen is either an increase in vacancies or a decrease in unemployed
+workers.
+
+### Averages
+
+* $\frac{1}{f}$ = Average duration of unemployment
+* $\frac{1}{q}$ = Average time it takes to fill a vacancy
+* $s = /frac{separations}{E}$ - separation rate
+* $\frac{1}{s}$ = Average duration of employment
+
+## Steady-State
+
+Let's look back at the relationships between unemployment and employment:
+
+1. # of hires can be defined as $f * U$
+    + $H(U, V) =  f * U$
+2. # of separations can be defined as $s * E$
+
+Steady-state of unemployment would be considered the natural rate of unemployement:
+\[
+f * U = s * E
+\]
+
+We can solve for the natural rate of unemployment $u*$:
+\[
+u = \frac{U}{LF}
+\]
+\[
+LF = E + U
+\]
+\[
+f*U = E*s
+\]
+\[
+f*U = (LF - U)*s
+\]
+\[
+f*U = sLF - sU
+\]
+\[
+sU + fU = sLF
+\]
+\[
+\frac{(s + f)U}{LF} = s
+\]
+\[
+u* = \frac{s}{(s + f)}
+\]
+Since we solved the job-finding rate for theta we can write:
+\[
+u* = \frac{s}{(s + f(\theta))}
+\]
+
+Which can be used to plot the a Bevridge curve:
+
+```{r echo = FALSE}
+gamma <- 0.5
+s <- 0.05
+uStar <- seq(from = 0, to = 10, by = 0.1)
+theta <- ((1 / gamma) * ((s / uStar) - s)) ^ 2
+data <- data.frame(theta = theta, uStar = uStar)
+
+gamma2 <- 5
+s3 <- 0.10
+data$theta2 <- ((1 / gamma2) * ((s / uStar) - s)) ^ 2
+data$theta3 <- ((1 / gamma) * ((s3 / uStar) - s3)) ^ 2
+
+data %>%
+  ggplot(aes(x = uStar, y = theta)) +
+  geom_line() +
+  geom_line(aes(y = theta2, color = "Increase gamama")) +
+  geom_line(aes(y = theta3, color = "Increase s")) +
+  xlab("Unempoyment Rate (u)") +
+  ylab("Market Tightnes") +
+  ggtitle("Bevridge Curve") +
+  scale_x_continuous(limits = c(0, 1))
+```
+
+
+# Supply of Vacancies
+
+A firm will open a vacancy if the marginal benefit of opening that vacancy is
+greater than or equal to the marginal cost of opening that vacancy. The firm
+earns a profit off a vacancy due to the output of the person they hire. The profit
+that the firm earns is $\pi = y - w$ where y is the output of the worker (MPL) and w is 
+their wage (in each period).
+
+If we recall $\frac{1}{s}$ is the average duration of a job and q is the probability
+of filling a vacancy (vacancy filling rate). This results in:
+\[
+MB = q * (y - w) * \frac{1}{s}
+\]
+Let us denote the cost of opening a vacancy (marginal cost) k. This means that any
+given firm will continue to open vacancies until:
+\[
+k = q * (y - w) * \frac{1}{s}
+\]
+
+This is called the vacancy supply condition (free-entry condition).
+
+If we go back to our example we can plug in our value for q:
+\[
+k = \gamma \frac{1}{\sqrt{\theta}} * (y - w) * \frac{1}{s}
+\]
+
+## Vacancy Supply curve
+
+
+
+
+
+
+
