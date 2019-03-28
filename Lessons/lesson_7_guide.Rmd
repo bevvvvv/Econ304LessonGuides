@@ -124,8 +124,7 @@ data$i <- (n + delta) * k_t
 steady <- (A / (n + delta)) ^ (1 / (1 - alpha))
 
 # max consumption
-maxConsum <- ((alpha * A) / (n + delta)) ^ (1 / (2 - alpha))
-print(maxConsum)
+maxConsum <- ((n + delta) / (alpha * A)) ^ (1 / (alpha - 1))
 
 data %>%
   ggplot(aes(x = k_t, y = y_t, color = "production")) +
@@ -134,6 +133,7 @@ data %>%
   geom_vline(xintercept = steady) +
   annotate("text", x = steady - 5, y = 1, label = "K*") +
   geom_vline(xintercept = maxConsum) +
+  annotate("text", x = maxConsum + 10, y = 1, label = "Max c") +
   xlab("Capital-Labor ratio") +
   ylab("Per-worker production") +
   ggtitle("Steady State investment vs production")
@@ -148,7 +148,9 @@ data %>%
   xlab("Capital-Labor ratio") +
   ylab("Consumption per worker") +
   ggtitle("Consumption per worker (Diff of production and steady invest)") +
-  scale_x_continuous(limits = c(0, 125))
+  geom_vline(xintercept = maxConsum) +
+  annotate("text", x = maxConsum + 10, y = 1, label = "Max c") +
+  scale_x_continuous(limits = c(0, 200))
 ```
   
 The maximum of consumption happens at the value of k with the biggest difference of
@@ -176,6 +178,141 @@ sf(k) = (n + \delta)k
 sy = (n + \delta)k
 \]
 
+Add in savings rate to compare steady state and actual investment:
+```{r echo = FALSE}
+s <- 0.2
+
+data$invest <- s * data$y_t
+
+# intecept
+steady <- ((s * A) / (n + delta)) ^ (1 / (1 - alpha))
+
+data %>%
+  ggplot(aes(x = k_t, y = invest, color = "actual investment")) +
+  geom_smooth() +
+  geom_smooth(aes(y = i, color = "steady investment")) +
+  geom_vline(xintercept = steady) +
+  annotate("text", x = steady + 2, y = 1, label = "K*") +
+  geom_vline(xintercept = steady - 5) +
+  annotate("text", x = steady - 7, y = 1, label = "K (low)") +
+  geom_vline(xintercept = steady + 10) +
+  annotate("text", x = steady + 12, y = 1, label = "K (high)") +
+  xlab("Capital-Labor ratio") +
+  ylab("Investment") +
+  ggtitle("Steady State investment vs Actual Investment") +
+  scale_x_continuous(limits = c(0, 50))
+```
+
+When the level of capital is less than $K^*$ (K (low)), then actual investment is greater than
+that required for steady state, so the capital-labor ratio incrases until it hits
+steady state, which also increases per worker production. In the other case when
+the level of capital is greater than $K^*$ (K (high)), then the actual investment is
+less than that required for steady state, so the capital-labor ratio decreases until
+it hits the steady state, which decrease per worker production.
+
+## Changes to the Solow Model
+
+
+There are three main factors that change the solow model
+
+1. Changes in TFP (A) change $sf(k)$
+2. Cahnges in savings rate (s) change $sf(k)$
+3. Changes in the population growth rate (n) change $(n + \delta)k$
+
+### Changes in A
+
+```{r echo = FALSE}
+n <- 0.05
+A2 <- 4
+A3 <- 8
+s <- 0.2
+data$y_t2 <- A2 * data$k_t ^ alpha
+data$invest2 <- s * data$y_t2
+data$y_t3 <- A3 * data$k_t ^ alpha
+data$invest3 <- s * data$y_t3
+data$i <- (n + delta) * k_t
+
+# intercept
+steady <- ((s * A) / (n + delta)) ^ (1 / (1 - alpha))
+steady2 <- ((s * A2) / (n + delta)) ^ (1 / (1 - alpha))
+steady3 <- ((s * A3) / (n + delta)) ^ (1 / (1 - alpha))
+
+
+data %>%
+  ggplot(aes(x = k_t, y = invest, color = "original")) +
+  geom_smooth() +
+  geom_smooth(aes(y = i, color = "original")) +
+  geom_smooth(aes(y = invest2, color = "decrease A")) +
+  geom_smooth(aes(y = invest3, color = "increase A")) +
+  geom_vline(xintercept = steady, color = "blue") +
+  geom_vline(xintercept = steady2, color = "red") +
+  geom_vline(xintercept = steady3, color = "green") +
+  xlab("Capital-Labor ratio") +
+  ylab("Per-worker production") +
+  ggtitle("Steady State investment vs Actual Investment") +
+  scale_x_continuous(limits = c(0, 50))
+```
+
+### Changes in s
+
+```{r echo = FALSE}
+s2 <- 0.3
+s3 <- 0.15
+data$y_t2 <- A * data$k_t ^ alpha
+data$invest2 <- s2 * data$y_t2
+data$y_t3 <- A * data$k_t ^ alpha
+data$invest3 <- s3 * data$y_t3
+data$i <- (n + delta) * k_t
+
+# intercept
+steady <- ((s * A) / (n + delta)) ^ (1 / (1 - alpha))
+steady2 <- ((s2 * A) / (n + delta)) ^ (1 / (1 - alpha))
+steady3 <- ((s3 * A) / (n + delta)) ^ (1 / (1 - alpha))
+
+
+data %>%
+  ggplot(aes(x = k_t, y = invest, color = "original")) +
+  geom_smooth() +
+  geom_smooth(aes(y = i, color = "original")) +
+  geom_smooth(aes(y = invest2, color = "increase s")) +
+  geom_smooth(aes(y = invest3, color = "decrease s")) +
+  geom_vline(xintercept = steady, color = "blue") +
+  geom_vline(xintercept = steady2, color = "green") +
+  geom_vline(xintercept = steady3, color = "red") +
+  xlab("Capital-Labor ratio") +
+  ylab("Per-worker production") +
+  ggtitle("Steady State investment vs Actual Investment") +
+  scale_x_continuous(limits = c(0, 50))
+```
+
+### Changes in n
+
+```{r echo = FALSE}
+n2 <- 0.1
+n3 <- 0.025
+data$i2 <- (n2 + delta) * k_t
+data$i3 <- (n3 + delta) * k_t
+
+# intercept
+steady <- ((s * A) / (n + delta)) ^ (1 / (1 - alpha))
+steady2 <- ((s * A) / (n2 + delta)) ^ (1 / (1 - alpha))
+steady3 <- ((s * A) / (n3 + delta)) ^ (1 / (1 - alpha))
+
+
+data %>%
+  ggplot(aes(x = k_t, y = invest, color = "original")) +
+  geom_smooth() +
+  geom_smooth(aes(y = i, color = "original")) +
+  geom_smooth(aes(y = i2, color = "increase n")) +
+  geom_smooth(aes(y = i3, color = "decrease n")) +
+  geom_vline(xintercept = steady, color = "blue") +
+  geom_vline(xintercept = steady2, color = "green") +
+  geom_vline(xintercept = steady3, color = "red") +
+  xlab("Capital-Labor ratio") +
+  ylab("Per-worker production") +
+  ggtitle("Steady State investment vs Actual Investment") +
+  scale_x_continuous(limits = c(0, 50))
+```
 
 
 
