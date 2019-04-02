@@ -315,6 +315,145 @@ data %>%
 ```
 
 
-# Insert growth paths after Romer model
+## Insert growth paths after Romer model
+
+# Chapter 7: Romer Growth Model
+
+
+## Endogenous Growth Theory
+
+This theory is merely an extension of the Solow model from chapter six.
+
+The Solow model explains the rule of **capital accumulation** in economic growth.
+
+* Requires an increase in technology or TFP in order to sustain growth
+* Technology is exogenous
+* Does **not** address **why** capital and productivity grow at different rates across different countries
+    + Why is there a greater increase in technology occurr in the USA versus Croatia?
+
+### Solow Basis
+
+Only Capital (K) and Labor (L) are inputs to production:
+\[
+Y = AF(K, L)
+\]
+
+### Romer Basis
+
+Technology or TFP (A) becomes and input alongside capital and labor. You get to choose
+what kind of technology you implement. Capital (K) and Labor (L) are objects, while
+techonology (A) is ideas, so you input both objects and ideas to make your product.
+
+Objects:
+
+* Rival in use
+    + If someone is using machine x, then I cannot use machine x
+* Diminishing returns
+* Excludable
+    + If someone wanted to make machine x really expensive, then I could be excluded from using it
+
+Ideas:
+
+* Non-Rivalrous
+* Increasing returns
+* Non-Excludable
+    + Idea behind patents and IP protections
+    + See under production of these goods - no incentive
+    + There are incentives when you can protect a resource you own
+
+## Romer Model
+
+### Notation
+
+In the Solow model all Labor was allocated to produce goods and services. In the
+Romer model some Labor producs goods and services (L~p~), but also some labor
+produces ideas (L~A~)
+
+* In t-shirt example we are all working to phsyically make the t-shirt (Solow)
+* If some of us were trying to figure out how to make it more effiicently then that would follow the Romer model (L~A~)
+    + Sew then dye vs dye then sew? - creation of new **ideas**
+
+\[
+\overline{N} = L_p + L_A
+\]
+
+$\alpha$ ~ a constant fraction of labor devote to research and development (R + D)
+
+* $0\leq\alpha\leq 1$
+* $L_A = \alpha\overline{N}$
+* $L_p = (1 - \alpha)\overline{N}$
+* In USA there is a big scare about decreased manufacturing
+* We still see growth in the value of our economy's production
+* This is because we care about the value derived from research and development
+
+$y_{p_t}$ ~ output per worker with a specific number of workers devoted to production of G + S (L~p~)
+
+\[y_{p_t} = \frac{Y_t}{L_p}\]
+\[k_{p_t} = \frac{K_t}{L_p}\]
+We can then conclude
+\[y_{p_t} = A_tk_{p_t}\]
+
+This states that A is now time dependent, but what drives the factor A~t~? We must
+have a production function for technology.
+
+So how does technology change?
+
+Change in technology over a time period can be denoted: $A_{t+1} - A_t = \Delta A_t$
+
+\[
+\Delta A_t = \chi A_t L_A
+\]
+
+Where $\chi$ is a factor that denotes how productive the labor (L~A~) is at producing
+new ideas $\Delta A_t$. This variable is exogenous.
+
+## Solow vs Romer Growth Rates
+
+In Solow g~A~ = 0 (growth rate of tech).
+
+In Romer $g_A = \frac{\Delta A_t}{A_t} = \frac{\chi A_t L_A}{A+t} = \chi L_A$. Since
+$L_A = \alpha\overline{N}$ we can state the growth rate of tech is:
+
+\[
+g_A = \chi\alpha\overline{N}
+\]
+
+Therefore growth rate of technology increases when:
+
+* Produtivity of R and D increases ($\chi$)
+* Overall Population Increases ($\overline{N}$)
+* Percentage of Labourers/Population producing ideas increases ($\alpha$)
+* All factors have a positive relationship with growth (g~A~)
+
+So now since $\alpha > 0$ we can see that $g_A > 0$ and $g_y > 0$
+
+Romer shows **sustained** growth!!
+
+## Production
+
+\[
+Y_t = A_t L_t^\alpha K_t^\beta
+\]
+with the conditions:
+
+* $\alpha + \beta = 1$
+* $0 < \alpha < 1$
+* $0 < \beta < 1$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
