@@ -429,7 +429,7 @@ So now since $\alpha > 0$ we can see that $g_A > 0$ and $g_y > 0$
 
 Romer shows **sustained** growth!!
 
-## Production
+## Production Function
 
 \[
 Y_t = A_t L_t^\alpha K_t^\beta
@@ -441,6 +441,69 @@ with the conditions:
 * $0 < \beta < 1$
 
 
+\[y_t = \frac{Y_t}{L_t} = \frac{A_tL^\alpha_tK_t^\beta}{L_t} = A_tL_t^{\alpha-1}K_t^\beta\]
+\[y_t = A_tL_t^{-\beta}K_t^\beta=A_t\frac{K_t^\beta}{L_t^\beta}=A_t(\frac{K_t}{L_t})^\beta\]
+\[y_t = A_tk_t^\beta\]
+
+**This is for ALL levels of y when we have some level of k**
+**This is NOT for y when we are in steady-state of capital, $k^*$**
+
+## Steady State
+
+We know that $k^*$ exists when $sy = (n + \delta)k$, therefore: $y^* = Ak^{*^\beta}$
+
+\[sAk^{*^\beta} = (n + \delta) k^*\]
+
+### Solving for Romer growth rate
+
+Three steps:
+
+1. Solve for $k^*$
+2. Plug in to get $y^*$
+3. Show the growth rates
+
+Solve for $k^*$
+\[sAk^{*^\beta} = (n + \delta) k^*\]
+\[sA = (n + \delta)k^{*^{1-\beta}}\]
+\[\frac{sA}{(n + \delta)} =k^{*^{1-\beta}}\]
+\[k^* = (\frac{sA}{(n + \delta)})^{(1 / (1 - \beta))}\]
+
+Plug in for $y^*$
+\[y^* = Ak^{*^\beta}\]
+\[y^* = A(\frac{sA}{(n + \delta)})^{(\beta / (1 - \beta))}\]
+\[y^* = A^{1+(\beta/1-\beta)}(\frac{s}{(n + \delta)})^{(\beta / (1 - \beta))}\]
+\[y^* = A^{1/1-\beta}(\frac{s}{(n + \delta)})^{(\beta / (1 - \beta))}\]
+
+Show the growth rates (which you can get using calculus)
+\[g_{y_*} = \frac{1}{1-\beta}g_A + \frac{\beta}{1-\beta}g_{\frac{s}{n + \delta}}\]
+But the growth of savings rate, population rate, and depreciation we assume is zero
+\[g_{y_*} = \frac{1}{1-\beta}g_A\]
+
+Which makes sense with respect to the Solow model. We saw a growth rate of zero,
+where we held A constant until there was a shock.
+
+### Romer at Steady State
+
+\[y^*_{p_t} = A_tk_p^{*^\beta}\]
+Recall $y_{p_t} = \frac{Y_t}{L_p}$  and $k_p = \frac{K}{L_p}$ and $\overline{N}=L_p+L_A$
+\[y_t = \frac{Y_t}{\overline{N}}*(\frac{L_p}{L_p}) = \frac{Y_t}{L_p}*(\frac{L_p}{\overline{N}})\]
+We know that $L_p = (1-\alpha)\overline{N}$
+\[y_t = y_{p_t}*(1 - \alpha)\]
+\[y_t = (1-\alpha)A_tk_{P_t}^\beta\] 
+But what if y is at steady state $y^*_t$ with the steady state of capital $k^*$:
+\[y_t^* = (1-\alpha)A_tk_{P_t}^{*^\beta}\] 
+
+
+## Back to Growth Paths
+
+\[g_y = g_{1-\alpha} + \frac{1}{1-\beta}g_A + \beta k_p\]
+But the growth rate of $1 -\alpha$ is zero (it is a constant). If k is in steady
+state, its growth is zero.
+\[g_y = \frac{1}{1-\beta}g_A + \beta g_{k_p}\]
+If in steady state:
+\[g_{y^*} = \frac{1}{1-\beta}g_A = \frac{1}{1-\beta}\chi\alpha\overline{N}\]
+
+### TO DO: GROWTH PATH GRAPHS FOR BOTH MODELS
 
 
 
