@@ -1,0 +1,81 @@
+---
+title: "Lesson 8: IS Curve and MP Curve"
+output:
+  pdf_document: 
+    toc: true
+    toc_depth: 2
+    number_sections: true
+  html_notebook: default
+---
+
+```{r include = FALSE}
+# refresh environment
+rm(list = ls())
+
+library(mdsr) # utility package for tidyverse
+```
+
+# Chapter 9: The IS (Investment and Savings) Curve
+
+The IS Curve shows us the real interest rate (r) that places the goods market (I = S)
+inro equilibrium for any level of output (Y).
+
+```{r}
+# TODO make IS curves
+```
+
+## Consumption (Lesson 5)
+
+\[C = \overline{C} + MPC(Y - \overline{T}) - cr \]
+Where c is how responsive consumption is to changes in the real interest rate (r)
+
+## Investment (Lesson 6)
+
+\[I = \overline{I}-dr_i = \overline{I} - d(r + \overline{f})\]
+Where r~i~ is the real interest rate on investment.
+\[r_i = r + \overline{f}\]
+
+$\overline{f}$ ~ financial frictions (risk)
+
+* cost of borrowing cause by barriers to effectively determine risk
+
+## Government Purchase and Taxes
+
+\[G = \overline{G}\]
+\[T =\overline{T}\]
+
+## Net Exports
+
+\[NX = \overline{NX} - xr\]
+
+If real interest rate in the US increases, then US investments have greater return,
+so interanational investors want to invest in the US. This creates a need for the US
+dollar (demand), the US dollar will become stronger and it costs more to produce in
+the US and NX will go down. You would also be able to import more.
+
+# Chapter 10: The MP Curve
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

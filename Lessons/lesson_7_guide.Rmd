@@ -506,7 +506,25 @@ If in steady state:
 ### TO DO: GROWTH PATH GRAPHS FOR BOTH MODELS
 
 
+## Changes in $\overline{N}$ and $\alpha$
 
+$\overline{N}$ increases:
+
+* g~A~ will increase
+* L~p~ will go up
+* k~p~ will go down (not enough for steady state)
+* k~p~ goes up in long run
+* $\frac{1}{1-\beta}g_A$ increases
+* $\beta g_{k_p}$ increases
+
+$\alpha$ increases:
+
+* g~A~ will increase
+* L~p~ will go down
+* k~p~ will go up (too much for steady state)
+* k~p~ goes down in long run
+* $\frac{1}{1-\beta}g_A$ increases
+* $\beta g_{k_p}$ decreases
 
 
 
