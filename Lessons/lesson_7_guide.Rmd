@@ -317,6 +317,10 @@ data %>%
 
 ## Insert growth paths after Romer model
 
+```{r}
+# TODO growth paths
+```
+
 # Chapter 7: Romer Growth Model
 
 
@@ -505,6 +509,9 @@ If in steady state:
 
 ### TO DO: GROWTH PATH GRAPHS FOR BOTH MODELS
 
+```{r}
+# TODO Romer growth paths
+```
 
 ## Changes in $\overline{N}$ and $\alpha$
 

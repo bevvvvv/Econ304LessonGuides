@@ -272,13 +272,122 @@ $(document).ready(function () {
 <p><span class="math display">\[NX = \overline{NX} - xr\]</span></p>
 <p>If real interest rate in the US increases, then US investments have greater return, so interanational investors want to invest in the US. This creates a need for the US dollar (demand), the US dollar will become stronger and it costs more to produce in the US and NX will go down. You would also be able to import more.</p>
 </div>
+<div id="is-equation" class="section level2">
+<h2>IS Equation</h2>
+<p><span class="math display">\[Y = C + I + G + NX\]</span> <span class="math display">\[Y = \overline{C} + MPC(Y-\overline{T}) - cr + \overline{I} - d(r + \overline{f}) + \overline{G} + \overline{NX} - xr\]</span> <span class="math display">\[Y = \overline{C} + MPCY-MPC\overline{T} - cr + \overline{I} - dr - d\overline{f} + \overline{G} + \overline{NX} - xr\]</span> <span class="math display">\[Y - MPCY = \overline{C} -MPC\overline{T} - cr + \overline{I} - dr - d\overline{f} + \overline{G} + \overline{NX} - xr\]</span> <span class="math display">\[Y(1 - MPC) = \overline{C}+ \overline{I}+ \overline{G} + \overline{NX} -MPC\overline{T}- d\overline{f}  - cr  - dr - xr\]</span> <span class="math display">\[Y = \frac{\overline{C}+ \overline{I}+ \overline{G} + \overline{NX} -MPC\overline{T}- d\overline{f}  - cr  - dr - xr}{(1 - MPC)}\]</span> <span class="math display">\[Y = \frac{1}{(1 - MPC)}(\overline{C}+ \overline{I}+ \overline{G} + \overline{NX} -MPC\overline{T}- d\overline{f}) - r(\frac{c+d+x}{1-MPC})\]</span></p>
+<p>Spending Multiplier is <span class="math inline">\(\frac{1}{1-MPC}\)</span> (how overall GDP changes when autonomous spending changes)</p>
+<p>Autonomous spending is <span class="math inline">\(\overline{C}+ \overline{I}+ \overline{G} + \overline{NX}\)</span>.</p>
+<div id="insert-graph" class="section level3">
+<h3>Insert GRAPH</h3>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBUT0RPIHJlcGVhdCBJUyBjdXJ2ZVxuYGBgIn0= -->
+<pre class="r"><code># TODO repeat IS curve</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Slope is <span class="math inline">\(-\frac{1 - MPC}{c + d + x}\)</span></p>
 </div>
-<div id="chapter-10-the-mp-curve" class="section level1">
-<h1>Chapter 10: The MP Curve</h1>
+</div>
+<div id="shifts-to-gdp" class="section level2">
+<h2>Shifts (to GDP)</h2>
+<p><span class="math inline">\(\Delta G\)</span>, a change in government purchases</p>
+<ul>
+<li>Positive effect</li>
+<li>Multiplier <span class="math inline">\(\frac{1}{1-MPC}\)</span></li>
+</ul>
+<p><span class="math inline">\(\Delta T\)</span>, a change in government taxes</p>
+<ul>
+<li>Negative effect</li>
+<li>Multiplier <span class="math inline">\(\frac{MPC}{1-MPC}\)</span></li>
+</ul>
+<p><span class="math inline">\(\Delta A_0\)</span>, a change in autonomous spending (<span class="math inline">\(\overline{C},\overline{I},\overline{NX}\)</span>)</p>
+<ul>
+<li>Positive effect</li>
+<li>Multiplier <span class="math inline">\(\frac{1}{1-MPC}\)</span></li>
+</ul>
+<p><span class="math inline">\(\Delta f\)</span>, a change in financial friction (risk)</p>
+<ul>
+<li>Negative effect</li>
+<li>Multiplier <span class="math inline">\(\frac{d}{1-MPC}\)</span></li>
+</ul>
+</div>
+</div>
+<div id="chapter-10-the-mp-curve-monetary-policy" class="section level1">
+<h1>Chapter 10: The MP Curve (Monetary Policy)</h1>
+<p>Recall that the Federal Reserve sets a target range for the Federal Funds Rate. Currently (April 11, 2019) the range is between 2.25 and 2.50%. This is 225 basis points to 250 basis points.</p>
+<p>Hows does the Federal Reserve try to enforce these policies?</p>
+<p>Old:</p>
+<ul>
+<li>Control overall Money Supply</li>
+<li>Open Market Operations</li>
+<li>Reserve requirements</li>
+<li>Discount policy</li>
+</ul>
+<p>New:</p>
+<ul>
+<li>Interest on Reserves</li>
+<li>Reverse Repos (Repurchasing Agreement)</li>
+</ul>
+<div id="mp-curve" class="section level2">
+<h2>MP Curve</h2>
+<p>The MP curve will show a relationship between real interest rate (r) and inflation (<span class="math inline">\(\pi\)</span>), with respct to monetary policy. How are r and <span class="math inline">\(\pi\)</span> related? Fisher eq:</p>
+<p><span class="math display">\[r = i - \pi\]</span></p>
+<p><strong>Taylor Principle</strong> states that CB (Central Bank) should increase nominal interest rate by more than what you expect your inflation rate (<span class="math inline">\(\pi\)</span>) to be. This means when inflation increases, so should real interest rate.</p>
+</div>
+<div id="mp-curve-equation" class="section level2">
+<h2>MP Curve Equation</h2>
+<p><span class="math display">\[r(\pi)\]</span> <span class="math display">\[r = \overline{r} + \lambda\pi\]</span></p>
+<p><span class="math inline">\(\overline{r}\)</span> is autonomous or exogenous component of the CB’s decision to set the real interest rate.</p>
+<p><span class="math inline">\(\lambda\)</span> dictates how responsive real interest rate to a change in inflation <span class="math inline">\(\Delta\pi\)</span></p>
+<p>Example: <span class="math inline">\(r = 1.0 + 0.5\pi\)</span></p>
+<p><strong>NOTE</strong> that 2% or 2 percent will be denoted 2 in the model.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBUT0RPIGdyYXBoIE1QIEN1cnZlXG5gYGAifQ== -->
+<pre class="r"><code># TODO graph MP Curve</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="monetary-policyfederal-reserve-language-to-know" class="section level2">
+<h2>Monetary Policy/Federal Reserve Language to know:</h2>
+<ul>
+<li>Tighten monetary policy means raising the real interest rate (r)
+<ul>
+<li>Contractionary</li>
+</ul></li>
+<li>Ease monetary policy means lowering the real interest rate (r)
+<ul>
+<li>Expansionary</li>
+</ul></li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Movement along MP Curve
+<ul>
+<li><span class="math inline">\(\Delta r\)</span> in response to <span class="math inline">\(\Delta\pi\)</span></li>
+<li>Achieve “stable prices”</li>
+<li>MP during “normal times” (not a lot of other stuff going on than changing prices)</li>
+</ul></li>
+<li>Shift of the MP Curve
+<ul>
+<li><span class="math inline">\(\Delta r\)</span> by changing <span class="math inline">\(\overline{r}\)</span></li>
+<li><span class="math inline">\(\pi\)</span> is stable but there is <span class="math inline">\(\Delta r\)</span></li>
+<li>Ex: 2007, 2008, recently</li>
+</ul></li>
+</ol>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBUT0RPIE1QL0lTIEN1cnZlIHNpZGUgYnkgc2lkZVxuYGBgIn0= -->
+<pre class="r"><code># TODO MP/IS Curve side by side</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 </div>
+</div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIkxlc3NvbiA4OiBJUyBDdXJ2ZSBhbmQgTVAgQ3VydmUiDQpvdXRwdXQ6DQogIHBkZl9kb2N1bWVudDogDQogICAgdG9jOiB0cnVlDQogICAgdG9jX2RlcHRoOiAyDQogICAgbnVtYmVyX3NlY3Rpb25zOiB0cnVlDQogIGh0bWxfbm90ZWJvb2s6IGRlZmF1bHQNCi0tLQ0KDQpgYGB7ciBpbmNsdWRlID0gRkFMU0V9DQojIHJlZnJlc2ggZW52aXJvbm1lbnQNCnJtKGxpc3QgPSBscygpKQ0KDQpsaWJyYXJ5KG1kc3IpICMgdXRpbGl0eSBwYWNrYWdlIGZvciB0aWR5dmVyc2UNCmBgYA0KDQojIENoYXB0ZXIgOTogVGhlIElTIChJbnZlc3RtZW50IGFuZCBTYXZpbmdzKSBDdXJ2ZQ0KDQpUaGUgSVMgQ3VydmUgc2hvd3MgdXMgdGhlIHJlYWwgaW50ZXJlc3QgcmF0ZSAocikgdGhhdCBwbGFjZXMgdGhlIGdvb2RzIG1hcmtldCAoSSA9IFMpDQppbnJvIGVxdWlsaWJyaXVtIGZvciBhbnkgbGV2ZWwgb2Ygb3V0cHV0IChZKS4NCg0KYGBge3J9DQojIFRPRE8gbWFrZSBJUyBjdXJ2ZXMNCmBgYA0KDQojIyBDb25zdW1wdGlvbiAoTGVzc29uIDUpDQoNClxbQyA9IFxvdmVybGluZXtDfSArIE1QQyhZIC0gXG92ZXJsaW5le1R9KSAtIGNyIFxdDQpXaGVyZSBjIGlzIGhvdyByZXNwb25zaXZlIGNvbnN1bXB0aW9uIGlzIHRvIGNoYW5nZXMgaW4gdGhlIHJlYWwgaW50ZXJlc3QgcmF0ZSAocikNCg0KIyMgSW52ZXN0bWVudCAoTGVzc29uIDYpDQoNClxbSSA9IFxvdmVybGluZXtJfS1kcl9pID0gXG92ZXJsaW5le0l9IC0gZChyICsgXG92ZXJsaW5le2Z9KVxdDQpXaGVyZSByfml+IGlzIHRoZSByZWFsIGludGVyZXN0IHJhdGUgb24gaW52ZXN0bWVudC4NClxbcl9pID0gciArIFxvdmVybGluZXtmfVxdDQoNCiRcb3ZlcmxpbmV7Zn0kIH4gZmluYW5jaWFsIGZyaWN0aW9ucyAocmlzaykNCg0KKiBjb3N0IG9mIGJvcnJvd2luZyBjYXVzZSBieSBiYXJyaWVycyB0byBlZmZlY3RpdmVseSBkZXRlcm1pbmUgcmlzaw0KDQojIyBHb3Zlcm5tZW50IFB1cmNoYXNlIGFuZCBUYXhlcw0KDQpcW0cgPSBcb3ZlcmxpbmV7R31cXQ0KXFtUID1cb3ZlcmxpbmV7VH1cXQ0KDQojIyBOZXQgRXhwb3J0cw0KDQpcW05YID0gXG92ZXJsaW5le05YfSAtIHhyXF0NCg0KSWYgcmVhbCBpbnRlcmVzdCByYXRlIGluIHRoZSBVUyBpbmNyZWFzZXMsIHRoZW4gVVMgaW52ZXN0bWVudHMgaGF2ZSBncmVhdGVyIHJldHVybiwNCnNvIGludGVyYW5hdGlvbmFsIGludmVzdG9ycyB3YW50IHRvIGludmVzdCBpbiB0aGUgVVMuIFRoaXMgY3JlYXRlcyBhIG5lZWQgZm9yIHRoZSBVUw0KZG9sbGFyIChkZW1hbmQpLCB0aGUgVVMgZG9sbGFyIHdpbGwgYmVjb21lIHN0cm9uZ2VyIGFuZCBpdCBjb3N0cyBtb3JlIHRvIHByb2R1Y2UgaW4NCnRoZSBVUyBhbmQgTlggd2lsbCBnbyBkb3duLiBZb3Ugd291bGQgYWxzbyBiZSBhYmxlIHRvIGltcG9ydCBtb3JlLg0KDQojIENoYXB0ZXIgMTA6IFRoZSBNUCBDdXJ2ZQ0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQo=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIkxlc3NvbiA4OiBJUyBDdXJ2ZSBhbmQgTVAgQ3VydmUiDQpvdXRwdXQ6DQogIHBkZl9kb2N1bWVudDogDQogICAgdG9jOiB0cnVlDQogICAgdG9jX2RlcHRoOiAyDQogICAgbnVtYmVyX3NlY3Rpb25zOiB0cnVlDQogIGh0bWxfbm90ZWJvb2s6IGRlZmF1bHQNCi0tLQ0KDQpgYGB7ciBpbmNsdWRlID0gRkFMU0V9DQojIHJlZnJlc2ggZW52aXJvbm1lbnQNCnJtKGxpc3QgPSBscygpKQ0KDQpsaWJyYXJ5KG1kc3IpICMgdXRpbGl0eSBwYWNrYWdlIGZvciB0aWR5dmVyc2UNCmBgYA0KDQojIENoYXB0ZXIgOTogVGhlIElTIChJbnZlc3RtZW50IGFuZCBTYXZpbmdzKSBDdXJ2ZQ0KDQpUaGUgSVMgQ3VydmUgc2hvd3MgdXMgdGhlIHJlYWwgaW50ZXJlc3QgcmF0ZSAocikgdGhhdCBwbGFjZXMgdGhlIGdvb2RzIG1hcmtldCAoSSA9IFMpDQppbnJvIGVxdWlsaWJyaXVtIGZvciBhbnkgbGV2ZWwgb2Ygb3V0cHV0IChZKS4NCg0KYGBge3J9DQojIFRPRE8gbWFrZSBJUyBjdXJ2ZXMNCmBgYA0KDQojIyBDb25zdW1wdGlvbiAoTGVzc29uIDUpDQoNClxbQyA9IFxvdmVybGluZXtDfSArIE1QQyhZIC0gXG92ZXJsaW5le1R9KSAtIGNyIFxdDQpXaGVyZSBjIGlzIGhvdyByZXNwb25zaXZlIGNvbnN1bXB0aW9uIGlzIHRvIGNoYW5nZXMgaW4gdGhlIHJlYWwgaW50ZXJlc3QgcmF0ZSAocikNCg0KIyMgSW52ZXN0bWVudCAoTGVzc29uIDYpDQoNClxbSSA9IFxvdmVybGluZXtJfS1kcl9pID0gXG92ZXJsaW5le0l9IC0gZChyICsgXG92ZXJsaW5le2Z9KVxdDQpXaGVyZSByfml+IGlzIHRoZSByZWFsIGludGVyZXN0IHJhdGUgb24gaW52ZXN0bWVudC4NClxbcl9pID0gciArIFxvdmVybGluZXtmfVxdDQoNCiRcb3ZlcmxpbmV7Zn0kIH4gZmluYW5jaWFsIGZyaWN0aW9ucyAocmlzaykNCg0KKiBjb3N0IG9mIGJvcnJvd2luZyBjYXVzZSBieSBiYXJyaWVycyB0byBlZmZlY3RpdmVseSBkZXRlcm1pbmUgcmlzaw0KDQojIyBHb3Zlcm5tZW50IFB1cmNoYXNlIGFuZCBUYXhlcw0KDQpcW0cgPSBcb3ZlcmxpbmV7R31cXQ0KXFtUID1cb3ZlcmxpbmV7VH1cXQ0KDQojIyBOZXQgRXhwb3J0cw0KDQpcW05YID0gXG92ZXJsaW5le05YfSAtIHhyXF0NCg0KSWYgcmVhbCBpbnRlcmVzdCByYXRlIGluIHRoZSBVUyBpbmNyZWFzZXMsIHRoZW4gVVMgaW52ZXN0bWVudHMgaGF2ZSBncmVhdGVyIHJldHVybiwNCnNvIGludGVyYW5hdGlvbmFsIGludmVzdG9ycyB3YW50IHRvIGludmVzdCBpbiB0aGUgVVMuIFRoaXMgY3JlYXRlcyBhIG5lZWQgZm9yIHRoZSBVUw0KZG9sbGFyIChkZW1hbmQpLCB0aGUgVVMgZG9sbGFyIHdpbGwgYmVjb21lIHN0cm9uZ2VyIGFuZCBpdCBjb3N0cyBtb3JlIHRvIHByb2R1Y2UgaW4NCnRoZSBVUyBhbmQgTlggd2lsbCBnbyBkb3duLiBZb3Ugd291bGQgYWxzbyBiZSBhYmxlIHRvIGltcG9ydCBtb3JlLg0KDQojIyBJUyBFcXVhdGlvbg0KDQpcW1kgPSBDICsgSSArIEcgKyBOWFxdDQpcW1kgPSBcb3ZlcmxpbmV7Q30gKyBNUEMoWS1cb3ZlcmxpbmV7VH0pIC0gY3IgKyBcb3ZlcmxpbmV7SX0gLSBkKHIgKyBcb3ZlcmxpbmV7Zn0pICsgXG92ZXJsaW5le0d9ICsgXG92ZXJsaW5le05YfSAtIHhyXF0NClxbWSA9IFxvdmVybGluZXtDfSArIE1QQ1ktTVBDXG92ZXJsaW5le1R9IC0gY3IgKyBcb3ZlcmxpbmV7SX0gLSBkciAtIGRcb3ZlcmxpbmV7Zn0gKyBcb3ZlcmxpbmV7R30gKyBcb3ZlcmxpbmV7Tlh9IC0geHJcXQ0KXFtZIC0gTVBDWSA9IFxvdmVybGluZXtDfSAtTVBDXG92ZXJsaW5le1R9IC0gY3IgKyBcb3ZlcmxpbmV7SX0gLSBkciAtIGRcb3ZlcmxpbmV7Zn0gKyBcb3ZlcmxpbmV7R30gKyBcb3ZlcmxpbmV7Tlh9IC0geHJcXQ0KXFtZKDEgLSBNUEMpID0gXG92ZXJsaW5le0N9KyBcb3ZlcmxpbmV7SX0rIFxvdmVybGluZXtHfSArIFxvdmVybGluZXtOWH0gLU1QQ1xvdmVybGluZXtUfS0gZFxvdmVybGluZXtmfSAgLSBjciAgLSBkciAtIHhyXF0NClxbWSA9IFxmcmFje1xvdmVybGluZXtDfSsgXG92ZXJsaW5le0l9KyBcb3ZlcmxpbmV7R30gKyBcb3ZlcmxpbmV7Tlh9IC1NUENcb3ZlcmxpbmV7VH0tIGRcb3ZlcmxpbmV7Zn0gIC0gY3IgIC0gZHIgLSB4cn17KDEgLSBNUEMpfVxdDQpcW1kgPSBcZnJhY3sxfXsoMSAtIE1QQyl9KFxvdmVybGluZXtDfSsgXG92ZXJsaW5le0l9KyBcb3ZlcmxpbmV7R30gKyBcb3ZlcmxpbmV7Tlh9IC1NUENcb3ZlcmxpbmV7VH0tIGRcb3ZlcmxpbmV7Zn0pIC0gcihcZnJhY3tjK2QreH17MS1NUEN9KVxdDQoNClNwZW5kaW5nIE11bHRpcGxpZXIgaXMgJFxmcmFjezF9ezEtTVBDfSQgKGhvdyBvdmVyYWxsIEdEUCBjaGFuZ2VzIHdoZW4gYXV0b25vbW91cyBzcGVuZGluZyBjaGFuZ2VzKQ0KDQpBdXRvbm9tb3VzIHNwZW5kaW5nIGlzICRcb3ZlcmxpbmV7Q30rIFxvdmVybGluZXtJfSsgXG92ZXJsaW5le0d9ICsgXG92ZXJsaW5le05YfSQuDQoNCiMjIyBJbnNlcnQgR1JBUEgNCg0KYGBge3J9DQojIFRPRE8gcmVwZWF0IElTIGN1cnZlDQpgYGANCg0KU2xvcGUgaXMgJC1cZnJhY3sxIC0gTVBDfXtjICsgZCArIHh9JA0KDQojIyBTaGlmdHMgKHRvIEdEUCkNCg0KJFxEZWx0YSBHJCwgYSBjaGFuZ2UgaW4gZ292ZXJubWVudCBwdXJjaGFzZXMNCg0KKiBQb3NpdGl2ZSBlZmZlY3QNCiogTXVsdGlwbGllciAkXGZyYWN7MX17MS1NUEN9JA0KDQokXERlbHRhIFQkLCBhIGNoYW5nZSBpbiBnb3Zlcm5tZW50IHRheGVzDQoNCiogTmVnYXRpdmUgZWZmZWN0DQoqIE11bHRpcGxpZXIgJFxmcmFje01QQ317MS1NUEN9JA0KDQokXERlbHRhIEFfMCQsIGEgY2hhbmdlIGluIGF1dG9ub21vdXMgc3BlbmRpbmcgKCRcb3ZlcmxpbmV7Q30sXG92ZXJsaW5le0l9LFxvdmVybGluZXtOWH0kKQ0KDQoqIFBvc2l0aXZlIGVmZmVjdA0KKiBNdWx0aXBsaWVyICRcZnJhY3sxfXsxLU1QQ30kDQoNCiRcRGVsdGEgZiQsIGEgY2hhbmdlIGluIGZpbmFuY2lhbCBmcmljdGlvbiAocmlzaykNCg0KKiBOZWdhdGl2ZSBlZmZlY3QNCiogTXVsdGlwbGllciAkXGZyYWN7ZH17MS1NUEN9JA0KDQojIENoYXB0ZXIgMTA6IFRoZSBNUCBDdXJ2ZSAoTW9uZXRhcnkgUG9saWN5KQ0KDQpSZWNhbGwgdGhhdCB0aGUgRmVkZXJhbCBSZXNlcnZlIHNldHMgYSB0YXJnZXQgcmFuZ2UgZm9yIHRoZSBGZWRlcmFsIEZ1bmRzIFJhdGUuDQpDdXJyZW50bHkgKEFwcmlsIDExLCAyMDE5KSB0aGUgcmFuZ2UgaXMgYmV0d2VlbiAyLjI1IGFuZCAyLjUwJS4gVGhpcyBpcyAyMjUgYmFzaXMNCnBvaW50cyB0byAyNTAgYmFzaXMgcG9pbnRzLg0KDQpIb3dzIGRvZXMgdGhlIEZlZGVyYWwgUmVzZXJ2ZSB0cnkgdG8gZW5mb3JjZSB0aGVzZSBwb2xpY2llcz8NCg0KT2xkOg0KDQoqIENvbnRyb2wgb3ZlcmFsbCBNb25leSBTdXBwbHkNCiogT3BlbiBNYXJrZXQgT3BlcmF0aW9ucw0KKiBSZXNlcnZlIHJlcXVpcmVtZW50cw0KKiBEaXNjb3VudCBwb2xpY3kNCg0KTmV3Og0KDQoqIEludGVyZXN0IG9uIFJlc2VydmVzDQoqIFJldmVyc2UgUmVwb3MgKFJlcHVyY2hhc2luZyBBZ3JlZW1lbnQpDQoNCiMjIE1QIEN1cnZlDQoNClRoZSBNUCBjdXJ2ZSB3aWxsIHNob3cgYSByZWxhdGlvbnNoaXAgYmV0d2VlbiByZWFsIGludGVyZXN0IHJhdGUgKHIpIGFuZCBpbmZsYXRpb24NCigkXHBpJCksIHdpdGggcmVzcGN0IHRvIG1vbmV0YXJ5IHBvbGljeS4gSG93IGFyZSByIGFuZCAkXHBpJCByZWxhdGVkPyBGaXNoZXIgZXE6DQoNClxbciA9IGkgLSBccGlcXQ0KDQoqKlRheWxvciBQcmluY2lwbGUqKiBzdGF0ZXMgdGhhdCBDQiAoQ2VudHJhbCBCYW5rKSBzaG91bGQgaW5jcmVhc2Ugbm9taW5hbCBpbnRlcmVzdA0KcmF0ZSBieSBtb3JlIHRoYW4gd2hhdCB5b3UgZXhwZWN0IHlvdXIgaW5mbGF0aW9uIHJhdGUgKCRccGkkKSB0byBiZS4gVGhpcyBtZWFucw0Kd2hlbiBpbmZsYXRpb24gaW5jcmVhc2VzLCBzbyBzaG91bGQgcmVhbCBpbnRlcmVzdCByYXRlLg0KDQojIyBNUCBDdXJ2ZSBFcXVhdGlvbg0KXFtyKFxwaSlcXQ0KXFtyID0gXG92ZXJsaW5le3J9ICsgXGxhbWJkYVxwaVxdDQoNCiRcb3ZlcmxpbmV7cn0kIGlzIGF1dG9ub21vdXMgb3IgZXhvZ2Vub3VzIGNvbXBvbmVudCBvZiB0aGUgQ0IncyBkZWNpc2lvbiB0byBzZXQNCnRoZSByZWFsIGludGVyZXN0IHJhdGUuDQoNCiRcbGFtYmRhJCBkaWN0YXRlcyBob3cgcmVzcG9uc2l2ZSByZWFsIGludGVyZXN0IHJhdGUgdG8gYSBjaGFuZ2UgaW4gaW5mbGF0aW9uICRcRGVsdGFccGkkDQoNCkV4YW1wbGU6ICRyID0gMS4wICsgMC41XHBpJA0KDQoqKk5PVEUqKiB0aGF0IDIlIG9yIDIgcGVyY2VudCB3aWxsIGJlIGRlbm90ZWQgMiBpbiB0aGUgbW9kZWwuDQoNCmBgYHtyfQ0KIyBUT0RPIGdyYXBoIE1QIEN1cnZlDQpgYGANCg0KIyMgTW9uZXRhcnkgUG9saWN5L0ZlZGVyYWwgUmVzZXJ2ZSBMYW5ndWFnZSB0byBrbm93Og0KDQoqIFRpZ2h0ZW4gbW9uZXRhcnkgcG9saWN5IG1lYW5zIHJhaXNpbmcgdGhlIHJlYWwgaW50ZXJlc3QgcmF0ZSAocikNCiAgICArIENvbnRyYWN0aW9uYXJ5DQoqIEVhc2UgbW9uZXRhcnkgcG9saWN5IG1lYW5zIGxvd2VyaW5nIHRoZSByZWFsIGludGVyZXN0IHJhdGUgKHIpDQogICAgKyBFeHBhbnNpb25hcnkNCg0KMS4gTW92ZW1lbnQgYWxvbmcgTVAgQ3VydmUNCiAgICArICRcRGVsdGEgciQgaW4gcmVzcG9uc2UgdG8gJFxEZWx0YVxwaSQNCiAgICArIEFjaGlldmUgInN0YWJsZSBwcmljZXMiDQogICAgKyBNUCBkdXJpbmcgIm5vcm1hbCB0aW1lcyIgKG5vdCBhIGxvdCBvZiBvdGhlciBzdHVmZiBnb2luZyBvbiB0aGFuIGNoYW5naW5nIHByaWNlcykNCjIuIFNoaWZ0IG9mIHRoZSBNUCBDdXJ2ZQ0KICAgICsgJFxEZWx0YSByJCBieSBjaGFuZ2luZyAkXG92ZXJsaW5le3J9JA0KICAgICsgJFxwaSQgaXMgc3RhYmxlIGJ1dCB0aGVyZSBpcyAkXERlbHRhIHIkDQogICAgKyBFeDogMjAwNywgMjAwOCwgcmVjZW50bHkNCg0KYGBge3J9DQojIFRPRE8gTVAvSVMgQ3VydmUgc2lkZSBieSBzaWRlDQpgYGANCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQo=</div>
 
 
 

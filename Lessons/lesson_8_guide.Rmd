@@ -53,12 +53,117 @@ so interanational investors want to invest in the US. This creates a need for th
 dollar (demand), the US dollar will become stronger and it costs more to produce in
 the US and NX will go down. You would also be able to import more.
 
-# Chapter 10: The MP Curve
+## IS Equation
 
+\[Y = C + I + G + NX\]
+\[Y = \overline{C} + MPC(Y-\overline{T}) - cr + \overline{I} - d(r + \overline{f}) + \overline{G} + \overline{NX} - xr\]
+\[Y = \overline{C} + MPCY-MPC\overline{T} - cr + \overline{I} - dr - d\overline{f} + \overline{G} + \overline{NX} - xr\]
+\[Y - MPCY = \overline{C} -MPC\overline{T} - cr + \overline{I} - dr - d\overline{f} + \overline{G} + \overline{NX} - xr\]
+\[Y(1 - MPC) = \overline{C}+ \overline{I}+ \overline{G} + \overline{NX} -MPC\overline{T}- d\overline{f}  - cr  - dr - xr\]
+\[Y = \frac{\overline{C}+ \overline{I}+ \overline{G} + \overline{NX} -MPC\overline{T}- d\overline{f}  - cr  - dr - xr}{(1 - MPC)}\]
+\[Y = \frac{1}{(1 - MPC)}(\overline{C}+ \overline{I}+ \overline{G} + \overline{NX} -MPC\overline{T}- d\overline{f}) - r(\frac{c+d+x}{1-MPC})\]
 
+Spending Multiplier is $\frac{1}{1-MPC}$ (how overall GDP changes when autonomous spending changes)
 
+Autonomous spending is $\overline{C}+ \overline{I}+ \overline{G} + \overline{NX}$.
 
+### Insert GRAPH
 
+```{r}
+# TODO repeat IS curve
+```
+
+Slope is $-\frac{1 - MPC}{c + d + x}$
+
+## Shifts (to GDP)
+
+$\Delta G$, a change in government purchases
+
+* Positive effect
+* Multiplier $\frac{1}{1-MPC}$
+
+$\Delta T$, a change in government taxes
+
+* Negative effect
+* Multiplier $\frac{MPC}{1-MPC}$
+
+$\Delta A_0$, a change in autonomous spending ($\overline{C},\overline{I},\overline{NX}$)
+
+* Positive effect
+* Multiplier $\frac{1}{1-MPC}$
+
+$\Delta f$, a change in financial friction (risk)
+
+* Negative effect
+* Multiplier $\frac{d}{1-MPC}$
+
+# Chapter 10: The MP Curve (Monetary Policy)
+
+Recall that the Federal Reserve sets a target range for the Federal Funds Rate.
+Currently (April 11, 2019) the range is between 2.25 and 2.50%. This is 225 basis
+points to 250 basis points.
+
+Hows does the Federal Reserve try to enforce these policies?
+
+Old:
+
+* Control overall Money Supply
+* Open Market Operations
+* Reserve requirements
+* Discount policy
+
+New:
+
+* Interest on Reserves
+* Reverse Repos (Repurchasing Agreement)
+
+## MP Curve
+
+The MP curve will show a relationship between real interest rate (r) and inflation
+($\pi$), with respct to monetary policy. How are r and $\pi$ related? Fisher eq:
+
+\[r = i - \pi\]
+
+**Taylor Principle** states that CB (Central Bank) should increase nominal interest
+rate by more than what you expect your inflation rate ($\pi$) to be. This means
+when inflation increases, so should real interest rate.
+
+## MP Curve Equation
+\[r(\pi)\]
+\[r = \overline{r} + \lambda\pi\]
+
+$\overline{r}$ is autonomous or exogenous component of the CB's decision to set
+the real interest rate.
+
+$\lambda$ dictates how responsive real interest rate to a change in inflation $\Delta\pi$
+
+Example: $r = 1.0 + 0.5\pi$
+
+**NOTE** that 2% or 2 percent will be denoted 2 in the model.
+
+```{r}
+# TODO graph MP Curve
+```
+
+## Monetary Policy/Federal Reserve Language to know:
+
+* Tighten monetary policy means raising the real interest rate (r)
+    + Contractionary
+* Ease monetary policy means lowering the real interest rate (r)
+    + Expansionary
+
+1. Movement along MP Curve
+    + $\Delta r$ in response to $\Delta\pi$
+    + Achieve "stable prices"
+    + MP during "normal times" (not a lot of other stuff going on than changing prices)
+2. Shift of the MP Curve
+    + $\Delta r$ by changing $\overline{r}$
+    + $\pi$ is stable but there is $\Delta r$
+    + Ex: 2007, 2008, recently
+
+```{r}
+# TODO MP/IS Curve side by side
+```
 
 
 
