@@ -1,0 +1,113 @@
+---
+title: "Lesson 9: Aggregate Demand and Aggregate Supply"
+output:
+  pdf_document: 
+    toc: true
+    toc_depth: 2
+    number_sections: true
+  html_notebook: default
+---
+
+```{r include = FALSE}
+# refresh environment
+rm(list = ls())
+
+library(mdsr) # utility package for tidyverse
+```
+
+# Part One
+
+# Part Two
+
+
+## 3 Conclusions
+
+1. No long run trade-offs between unemployment and inflation, because prices adjust
+2. There is a short run trade-off
+3. There are two types of Phillips Curves (SRPC, LRPC)
+
+```{r}
+# TODO insert SRPC vs LRPC graph here
+```
+
+## The Modern Phillips Curve
+
+In 1973 and 1979 the United States economy encountered "oil shocks."
+\[\pi = \pi^e - \omega(u-u_n) + \rho\]
+
+### Phillips Curve with Adaptive Expectations
+
+"What has the pattern been? I am going to predict according to that pattern."
+
+\[\pi^e = \pi_{-1}\]
+\[\pi = \pi_{-1}-\omega(u-u_n)+\rho\]
+
+Two advantages:
+
+1. Provides reason for sticky prices and sticky wages
+    + $\pi$ may not fully adjust because people only look backwards
+2. We can look at $\Delta\pi = \pi - \pi_{-1}$
+
+\[\pi - \pi_{-1} = -q(u-u_n) + \rho\]
+
+Assume $\rho = 0$
+
+Therefor $\Delta\pi = 0$ if and only if $u = u_n$, so we call u~n~ NAIRU. This is
+Non-Accelerating Inflation Rate of Unemployment.
+
+# Part Three: Aggregate Supply Curves
+
+Aggregate Supply Curves are the relationship between the output (Y) that firms
+are willing to supply and inflation (price level $\pi$).
+
+## Long Run Aggregate Supply Curve (LRAS)
+```{r}
+# TODO insert LR graph
+```
+
+"Input prices are going to change to what output prices are changing"
+
+### Shifts
+
+1. Increase in Productivity shifts LRAS right ($\Delta A$)
+2. Increase in Capial, Labor, etc... shifts LRAS right ($\Delta inputs$)
+3. Institutions (policy or such to create incentive for economic growth)
+    + Property Rights, Rule of Law, education system, healthcare system...
+
+## Short Run Aggregate Supply Curve (SRAS)
+
+Take the Phillips curve and replace the unemployment gap ($u-u_n$) with the output
+gap ($Y-Y^p$).
+
+**Okun's Law:**
+
+* For each percentage point Y is above Y^p^
+* u is 1/2 percentage point below the natural rate u~n~
+* $(u - u_n) = -0.5(Y = Y^p)$
+
+SRAS equation (plug in Okun's law to PC):
+\[\pi = \pi_{-1}+0.5\omega(Y - Y^p) + \rho\]
+\[\pi = \pi_{-1}+ \gamma(Y - Y^p) + \rho\]
+
+```{r}
+# TODO make SRAS curve
+```
+
+### Shifts
+
+1. Increase in expected inflation $\Delta\pi^e = \Delta\pi_{-1}$
+2. Increase in price shock shifts curve up (left) ($\Delta\rho$)
+3. The output gap ($\Delta(Y - Y^p)$)
+    + If $Y\ne Y^p$ the we have $\Delta\pi$, so $\pi_{-1}$ changes
+
+
+
+
+
+
+
+
+
+
+
+
