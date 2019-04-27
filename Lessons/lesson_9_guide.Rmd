@@ -15,9 +15,94 @@ rm(list = ls())
 library(mdsr) # utility package for tidyverse
 ```
 
-# Part One
+# Part One: Aggregate Demand (AD) Curve
 
-# Part Two
+The aggregate demand curve demonstrates the negative relationship between inflation ($\pi$)
+and overall output (Y) when the goods market is in equilibrium.
+
+We already know about the IS (Investment Savings) and the MP (Monetary Policy) cuves:
+\[Y(r)\]
+\[r(\pi)\]
+
+We can get the AD curve through the composition of functions:
+
+\[Y(r(\pi)) = Y(\pi)\]
+
+Recall the IS Curve:
+\[Y = \frac{1}{(1 - MPC)}(\overline{C}+ \overline{I}+ \overline{G} + \overline{NX} -MPC\overline{T}- d\overline{f}) - r(\frac{c+d+x}{1-MPC})\]
+Let us denotes the variable A as:
+\[A = \frac{1}{(1 - MPC)}(\overline{C}+ \overline{I}+ \overline{G} + \overline{NX} -MPC\overline{T}- d\overline{f})\]
+And we have our MP curve:
+\[r = \overline{r} + \lambda\pi\]
+We get the composition (AD Curve):
+\[Y = A -(\frac{c+d+x}{1-MPC})r(\pi)\]
+\[Y = A - (\frac{c+d+x}{1-MPC})(\overline{r} + \lambda\pi)\]
+\[Y = A - \overline{r}(\frac{c+d+x}{1-MPC}) - \lambda\pi(\frac{c+d+x}{1-MPC})\]
+
+From this equation you can see everything but $\lambda$ and $\pi$ helps to shift
+the function. Note that when you look at shifts for each the IS curve and the AD
+curve move horizontally (left and right), while the MP curve moves vertically (up
+and down) based off the response variable of their function.
+
+For example if we have the following IS and MP Curves:
+\[Y = 12 - r\]
+\[r = 1 + 0.5\pi\]
+
+Then we get the AD Curve:
+\[Y = 12 - (1 + 0.5\pi) = 11 - 0.5\pi\]
+
+```{r echo = FALSE}
+y <- seq(from = 0, to = 20, by = 0.2)
+IS <- 12 - y
+MP <- 1 + 0.5 * y
+AD <- 11 - 0.5* y
+
+data <- data.frame(y = y, IS = IS, MP = MP, AD = AD)
+data %>%
+  ggplot(aes(x = y, y = MP)) +
+  geom_smooth() + 
+  xlab("Inflation") +
+  ylab("Real interest rate (r)") +
+  ggtitle("Monetary Policy (MP) Curve")
+```
+
+```{r echo = FALSE}
+data %>%
+  ggplot(aes(x = y, y = IS)) +
+  geom_smooth() + 
+  xlab("Output (Y)") +
+  ylab("Real interest rate (r)") +
+  ggtitle("Investment Savings (IS) Curve")
+```
+```{r echo = FALSE}
+data %>%
+  ggplot(aes(x = y, y = AD)) +
+  geom_smooth() + 
+  xlab("Output (Y)") +
+  ylab("Inflation") +
+  ggtitle("Aggregate Demand (AD) Curve")
+```
+
+
+# Part Two: The Phillips Curve
+
+## Friedman-Phelps Phillips Curve
+
+The aggregate demand curve shows the relationship of inflation and ouput, but where
+does the inflation rate come from? The Phillips Curve shows the negative relationship
+between unemployment and inflation.
+
+We know that when unemployment is low, the market is tighter. Tighter markets lead
+to higher wages. Higher wages lead to higher prices, which means an increase inflation.
+This was taken as a **fact** in 1960.
+
+In 1967/68 Friedman and Phelps argued that in the long run prices adjust and we
+arrive at the natural rate of unemployment. From this we get the Friedman-Phelps
+Phillips curve:
+\[\pi = \pi^e - w(u - u_n)\]
+
+where u - u~n~ is the unemployment gap. This is known as the "Expectations-Augmented
+Phillips Curve".
 
 
 ## 3 Conclusions
@@ -99,7 +184,75 @@ SRAS equation (plug in Okun's law to PC):
 2. Increase in price shock shifts curve up (left) ($\Delta\rho$)
 3. The output gap ($\Delta(Y - Y^p)$)
     + If $Y\ne Y^p$ the we have $\Delta\pi$, so $\pi_{-1}$ changes
+    
+    
+# Summary
 
+```{r}
+# TODO make summary graph
+```
+
+General Equilibrium when AD = AS (this is SRAS) you can solve for $\pi$:
+
+1. AD: $y(\pi)$
+2. AS: $\pi(y)$
+
+Long Run General Equilirbium LRAS = AS = AD
+
+* $u - u_n$
+* $y = y^p$
+* $\pi = \pi^e$
+
+Q: If we are in a short run general equilibrium (SR-GE), how does the economy get
+to the long run general equilibrium (LR-GE)?
+
+1. Self-Correcting Mechanism (Lesson 9)
+2. Policy Action (Lesson 10)
+
+## Expansion (Y > Y^p^)
+
+```{r echo = FALSE}
+xVal <- seq(from = 0, to = 20, by = 0.2)
+AS <- xVal
+AD <- 20 - xVal
+ASup <- 5 + AS
+ASdown <- AS - 5
+data <- data.frame(xVal = xVal, AS = AS, AD = AD, stringsAsFactors = FALSE)
+data %>%
+  ggplot(aes(x = xVal, y = AS, color = "AS")) +
+    geom_smooth() +
+    geom_smooth(aes(y = AD, color = "AD")) +
+    geom_smooth(aes(y = ASup, color = "AS")) +
+    geom_vline(xintercept = 7.5) +
+    xlab("Output (Y)") +
+    ylab("Inflation (pi)") +
+    ggtitle("Expansion Situation of AS vs AD")
+```
+
+We see a positive output gap (producing more than we would in LRAS). This means
+the labor market must be tight, which means wages will increase. Higher wages lead
+to higher inflation, which makes one expect higher inflation, which shifts AS curve
+up. When AS shifts up it will move the equilibrium point toward the LRAS curve. This
+means it will self correct to the LR-GE.
+
+## Recession (Y < Y^p^)
+
+```{r echo = FALSE}
+data %>%
+  ggplot(aes(x = xVal, y = AS, color = "AS")) +
+    geom_smooth() +
+    geom_smooth(aes(y = AD, color = "AD")) +
+    geom_smooth(aes(y = ASdown, color = "AS")) +
+    geom_vline(xintercept = 12.5) +
+    xlab("Output (Y)") +
+    ylab("Inflation (pi)") +
+    ggtitle("Recession Situation of AS vs AD")
+```
+
+We see a negative output gap (producing less than we would in LRAS). This means
+we have "slack" in the labor market (workers willing to work). This creates a downward
+pressure on wages, which results in a disinflation. You would then expect a decrease
+in inflation, so AS would shift downward. This means it would self correct to LR-GE.
 
 
 
