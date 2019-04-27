@@ -111,8 +111,22 @@ Phillips Curve".
 2. There is a short run trade-off
 3. There are two types of Phillips Curves (SRPC, LRPC)
 
-```{r}
+```{r echo = FALSE}
 # TODO insert SRPC vs LRPC graph here
+expect <- 15
+wage <- 1
+natural <- 4
+u <- seq(from = 0, to = 20, by = 0.2)
+SRPC <- expect - wage * (u - natural)
+data <- data.frame(u = u, SRPC = SRPC)
+
+data %>%
+  ggplot(aes(x = u, y = SRPC)) +
+  geom_smooth() +
+  geom_vline(xintercept = natural) +
+  xlab("Unemployment (U)") +
+  ylab("Inflation") +
+  ggtitle("Short and Long Run Phillips Curve")
 ```
 
 ## The Modern Phillips Curve
@@ -146,8 +160,15 @@ Aggregate Supply Curves are the relationship between the output (Y) that firms
 are willing to supply and inflation (price level $\pi$).
 
 ## Long Run Aggregate Supply Curve (LRAS)
-```{r}
-# TODO insert LR graph
+```{r echo = FALSE}
+output <- 12
+
+data %>%
+  ggplot(aes(x = u)) +
+  geom_vline(xintercept = output) +
+  xlab("Output (Y)") +
+  ylab("Inflation") +
+  ggtitle("LRAS Curve")
 ```
 
 "Input prices are going to change to what output prices are changing"
@@ -174,8 +195,17 @@ SRAS equation (plug in Okun's law to PC):
 \[\pi = \pi_{-1}+0.5\omega(Y - Y^p) + \rho\]
 \[\pi = \pi_{-1}+ \gamma(Y - Y^p) + \rho\]
 
-```{r}
+```{r  echo = FALSE}
 # TODO make SRAS curve
+gamma <- 2
+SRAS <- expect + gamma * (u - output)
+data$SRAS <- SRAS
+data %>%
+  ggplot(aes(x = u, y = SRAS)) +
+  geom_smooth() +
+  xlab("Ouptut (y)") +
+  ylab("Inflation") +
+  ggtitle("SRAS Curve")
 ```
 
 ### Shifts
@@ -188,8 +218,18 @@ SRAS equation (plug in Okun's law to PC):
     
 # Summary
 
-```{r}
+```{r echo = FALSE}
 # TODO make summary graph
+data$AD <- AD
+output <- 8
+data %>%
+  ggplot(aes(x = u, y = SRAS)) +
+  geom_smooth() +
+  geom_smooth(aes(y = AD)) +
+  geom_vline(xintercept = output) +
+  xlab("Ouput (Y)") +
+  ylab("Inflation") +
+  ggtitle("AD/AS at long and short run")
 ```
 
 General Equilibrium when AD = AS (this is SRAS) you can solve for $\pi$:

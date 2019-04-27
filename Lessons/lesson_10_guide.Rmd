@@ -14,3 +14,57 @@ rm(list = ls())
 
 library(mdsr) # utility package for tidyverse
 ```
+
+# Two Objectives
+
+1. Stabilizing Economic Activity (Y -> y^p^)
+2. Low and Stable Inflation ($\pi$ -> $\pi^T$)
+
+## Stabilizing Economic Activity (Fed and Governement)
+
+How do we aim to stabilize economic activity? We want to aim for maximum employment
+also known as the natural rate of unemployment. This is done both throught monetary
+and fiscal policy. Monetary policy (MP) changes $\Delta\overline{r}$ and fiscal
+policy changes taxes ($\Delta T$) and government spending ($\Delta G$).
+
+## Low and Stable Inflation
+
+To achieve low and stable inflation the fed aims for an inflation target $\pi^T$.
+The Fed wants to achieve this goal, because higher inflation and higher variation in
+inflation leads to difficult planning for business and decreases the growth rate
+of the economy (g~y~).
+
+# Central Bank Mandates
+
+There are two types of Mandates:
+
+1. Dual Mandate
+2. Hierarchial Mandate
+
+## Dual Mandate
+
+In a dual mandate, each objective is equally important.
+
+1. Maximum employment (u = u~n~).
+    + Those who prioritize this are called doves.
+2. Price Stability ($\pi = \pi^T$)
+    + Those who prioritize this are called hawks.
+    
+## Hierarchial Mandate
+
+In this type of mandate the central bank is required to focus on price stability
+above all other mandates. (ECB, BOC, BOE, RB of NZ)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
